@@ -1,0 +1,42 @@
+.form {
+    width: 50%;
+    padding: 20px;
+
+    background: #FFFFFF;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+}
+
+.clearBlock {
+    margin-bottom: 32px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clearLabel {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    color: #232134;
+}
+
+.clearButton {
+    border: none;
+    background: inherit;
+
+    /*font-family: 'Inter';*/
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ACADB9;
+}
+
+.clearButton:hover {
+    cursor: pointer;
+    color: #8b8c99;
+}
