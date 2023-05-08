@@ -27,6 +27,9 @@
         "no-multiple-empty-lines": "warn",
         "indent": ["error", 2],
         "no-multi-spaces": "error",
-        "object-curly-spacing": ["error", "always"]
+        "object-curly-spacing": ["error", "always"],
+        "react/jsx-tag-spacing": ["error", {
+            "beforeSelfClosing": "always"
+        }]
     }
 }

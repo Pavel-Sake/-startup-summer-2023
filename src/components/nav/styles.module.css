@@ -1,0 +1,20 @@
+.navList {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.itemList {
+    margin-right: 60px;
+
+    /*font-family: 'Inter';*/
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.itemList:nth-child(2) {
+    margin-right: 0;
+}
