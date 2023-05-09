@@ -8,18 +8,23 @@ type MyProps = {
   data: any;
 }
 
-function JobVacancyBlock({ data }: MyProps) {
+function JobVacancy({ data }: MyProps) {
 
   console.log(data);
+
+  if (!data) {
+    return null;
+  }
+
   return (
-    <ul>
+    <ul className={styles.listVacancy}>
       {
         data.objects.map((item: any) => {
-          return <JobVacancyItem data={item} />;
+          return <JobVacancyItem key={item.id} data={item} />;
         })
       }
     </ul>
   );
 }
 
-export { JobVacancyBlock };
+export { JobVacancy };
