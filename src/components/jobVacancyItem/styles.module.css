@@ -1,0 +1,78 @@
+.item {
+    width: 392px;
+    padding: 24px;
+
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+    background: #FFFFFF;
+}
+
+.name {
+    margin-bottom: 12px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #5E96FC;
+}
+
+.blockRow {
+    margin-bottom: 12px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.salary {
+    margin-right: 12px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #232134;
+}
+
+
+
+.mark {
+    margin-right: 12px;
+
+    color: #7B7C88;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 21px;
+}
+
+.typeOfWork {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #232134;
+}
+
+.locationImg {
+    margin-right: 12px;
+}
+
+.city {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #232134;
+}

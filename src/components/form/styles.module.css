@@ -1,6 +1,8 @@
 .form {
-    width: 50%;
+    /*width: 50%;*/
+    width: 315px;
     padding: 20px;
+    margin-right: 28px;
 
     background: #FFFFFF;
     border: 1px solid #EAEBED;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Select, NumberInput, Button } from "@mantine/core";
 import { IconChevronDown, IconChevronUpLeft } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
@@ -18,6 +18,21 @@ function Form() {
 
     },
   });
+
+  // useEffect(() => {
+  //   fetch("https://startup-summer-2023-proxy.onrender.com/2.0/catalogues/", {
+  //     method: "GET",
+  //     headers: {
+  //       "x-secret-key": "GEU4nvd3rej*jeh.eqp",
+  //       "Content-Type": "application/json"
+  //     } })
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
   
   return (
     <form className={styles.form} onSubmit={form.onSubmit((values) => console.log(values))}>
