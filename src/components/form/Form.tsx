@@ -1,15 +1,45 @@
-import React from "react";
-import { Select, NumberInput, Button } from "@mantine/core";
+import React, { useState } from "react";
+import { Select, NumberInput, Button, SelectItem } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
 
 import styles from "./styles.module.css";
+import { useGetCataloguesQuery } from "../../services/startupSummerApi";
+import { ServerResponseCatalogues } from "../../models/modelsCatalogues";
+
+interface IStateForSelect {
+  value: string,
+  label: string,
+}
 
 function Form() {
+  
+  const [cataloguesForSelect, setCataloguesForSelect] = useState<IStateForSelect[]>([]);
+  const [catalogues, setCatalogues] = useState<ServerResponseCatalogues[] | null>(null);
+
+  const { data, error, isLoading } = useGetCataloguesQuery("text", {
+    skip: cataloguesForSelect.length > 0
+  });
+
+  if (data) {
+    const newArr: IStateForSelect[] = [];
+
+    setCatalogues(data);
+
+    data.forEach((item, index) => {
+
+      const obj = {
+        value: `${index}`,
+        label: item.title_rus,
+      };
+      newArr.push(obj);
+    });
+    setCataloguesForSelect(newArr);
+  }
 
   const form = useForm({
     initialValues: {
-      industry: "",
+      cataloguesId: "",
       salaryMin: "",
       salaryMax: "",
     },
@@ -19,9 +49,17 @@ function Form() {
     },
   });
 
+  function showData(values: any) {
+
+    console.log(values)
+
+    if (catalogues) {
+      console.log("catalogues", catalogues[values.catalogues])
+    }
+  }
 
   return (
-    <form className={styles.form} onSubmit={form.onSubmit((values) => console.log(values))}>
+    <form className={styles.form} onSubmit={form.onSubmit((values) => showData(values))}>
       <div className={styles.clearBlock}>
         <div className={styles.clearLabel}>Фильтры</div>
         <button className={styles.clearButton}>
@@ -33,13 +71,8 @@ function Form() {
         label="Отрасль"
         placeholder="Выберите отрасль"
         rightSection={<IconChevronDown size="1rem" />}
-        data={[
-          { value: "react", label: "React" },
-          { value: "ng", label: "Angular" },
-          { value: "svelte", label: "Svelte" },
-          { value: "vue", label: "Vue" },
-        ]}
-        {...form.getInputProps("industry")}
+        data={cataloguesForSelect}
+        {...form.getInputProps("cataloguesId")}
       />
 
       <NumberInput
