@@ -10,8 +10,6 @@ type MyProps = {
 
 function JobVacancy({ data }: MyProps) {
 
-  console.log(data);
-
   if (!data) {
     return null;
   }

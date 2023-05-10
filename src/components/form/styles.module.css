@@ -42,3 +42,15 @@
     cursor: pointer;
     color: #8b8c99;
 }
+
+.select{
+    margin-bottom: 20px;
+}
+
+.numberInputMax {
+    margin-top: 8px;
+}
+
+.submitButton {
+    margin-top: 20px;
+}

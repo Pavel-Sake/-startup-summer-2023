@@ -3,6 +3,9 @@ import React from "react";
 import styles from "./styles.module.css";
 import locationImg from "../../assets/icons/locationImg.png";
 
+import starWhite from "../../assets/icons/starWhite.png";
+// import starBlue from "../../assets/icons/starBlue.png";
+
 type MyProps = {
   data: any;
 }
@@ -23,7 +26,9 @@ function JobVacancyItem({ data }: MyProps) {
           <p className={styles.city}>{data.town.title}</p>
         </div>
       </div>
-      <div></div>
+      <button className={styles.buttonFavorite}>
+        <img src={starWhite} alt="star icon" />
+      </button>
     </li>
   );
 }

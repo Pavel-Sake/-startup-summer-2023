@@ -29,6 +29,7 @@ function Form() {
         </button>
       </div>
       <Select
+        className={styles.select}
         label="Отрасль"
         placeholder="Выберите отрасль"
         rightSection={<IconChevronDown size="1rem" />}
@@ -49,13 +50,14 @@ function Form() {
         {...form.getInputProps("salaryMin")}
       />
       <NumberInput
+        className={styles.numberInputMax}
         placeholder="До"
         max={120}
         min={0}
         {...form.getInputProps("salaryMax")}
       />
 
-      <Button type="submit">Submit</Button>
+      <Button className={styles.submitButton} type="submit">Submit</Button>
     </form>
   );
 }
