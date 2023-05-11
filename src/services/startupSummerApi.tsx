@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL, LOGIN, PASSWORD, CLIENT_ID, CLIENT_SECRET, SECRET_KEY } from "../constans/constans";
-import { ServerResponse } from "../models/modelsVacancies";
-import {ServerResponseCatalogues} from "../models/modelsCatalogues";
-
+import { ServerResponseVacancies } from "../models/modelsVacancies";
+import { ServerResponseCatalogues } from "../models/modelsCatalogues";
 
 
 // const accessKey = localStorage.getItem("key");
@@ -22,7 +21,7 @@ export const startupSummerApi = createApi({
       "x-secret-key": SECRET_KEY,
     }, }),
   endpoints: (builder) => ({
-    getAccessToken: builder.query<ServerResponse, obj>({
+    getAccessToken: builder.query<ServerResponseVacancies, obj>({
       query: (obf: obj) => ({
         url: "vacancies/",
         headers: {
@@ -35,7 +34,7 @@ export const startupSummerApi = createApi({
       query: (text: string) => "catalogues/",
     }),
 
-    getVacancies: builder.query<ServerResponse, obj>({
+    getVacancies: builder.query<ServerResponseVacancies, obj>({
       query: (obf: obj) => `vacancies/?t=4&page=${obf.page}&count=${obf.count}`,
     }),
 

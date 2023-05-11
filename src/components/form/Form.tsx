@@ -1,45 +1,31 @@
-import React, { useState } from "react";
-import { Select, NumberInput, Button, SelectItem } from "@mantine/core";
+import React from "react";
+import { Select, NumberInput, Button } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
+import { useAppDispatch } from "../../hooks/redux";
+import { vacancyFilterAction } from "../../store/reducers/cataloguesFromSlice";
+import { useCatalogues } from "../../hooks/useCatalogues";
 
 import styles from "./styles.module.css";
-import { useGetCataloguesQuery } from "../../services/startupSummerApi";
-import { ServerResponseCatalogues } from "../../models/modelsCatalogues";
 
-interface IStateForSelect {
-  value: string,
-  label: string,
+
+interface IFilter {
+  cataloguesKey: string,
+  salaryMin: string,
+  salaryMax: string,
 }
 
 function Form() {
-  
-  const [cataloguesForSelect, setCataloguesForSelect] = useState<IStateForSelect[]>([]);
-  const [catalogues, setCatalogues] = useState<ServerResponseCatalogues[] | null>(null);
 
-  const { data, error, isLoading } = useGetCataloguesQuery("text", {
-    skip: cataloguesForSelect.length > 0
-  });
+  const { setFilterForm } = vacancyFilterAction;
+  const dispatch = useAppDispatch();
 
-  if (data) {
-    const newArr: IStateForSelect[] = [];
+  const cataloguesForSelect = useCatalogues();
 
-    setCatalogues(data);
-
-    data.forEach((item, index) => {
-
-      const obj = {
-        value: `${index}`,
-        label: item.title_rus,
-      };
-      newArr.push(obj);
-    });
-    setCataloguesForSelect(newArr);
-  }
 
   const form = useForm({
     initialValues: {
-      cataloguesId: "",
+      cataloguesKey: "",
       salaryMin: "",
       salaryMax: "",
     },
@@ -49,17 +35,13 @@ function Form() {
     },
   });
 
-  function showData(values: any) {
+  function handleSubmitForm(values: IFilter) {
+    dispatch(setFilterForm(values));
 
-    console.log(values)
-
-    if (catalogues) {
-      console.log("catalogues", catalogues[values.catalogues])
-    }
   }
 
   return (
-    <form className={styles.form} onSubmit={form.onSubmit((values) => showData(values))}>
+    <form className={styles.form} onSubmit={form.onSubmit((values) => handleSubmitForm(values))}>
       <div className={styles.clearBlock}>
         <div className={styles.clearLabel}>Фильтры</div>
         <button className={styles.clearButton}>
@@ -72,21 +54,23 @@ function Form() {
         placeholder="Выберите отрасль"
         rightSection={<IconChevronDown size="1rem" />}
         data={cataloguesForSelect}
-        {...form.getInputProps("cataloguesId")}
+        {...form.getInputProps("cataloguesKey")}
       />
 
       <NumberInput
         label="Оклад"
         placeholder="От"
-        max={120}
+        max={12000}
         min={0}
+        step={500}
         {...form.getInputProps("salaryMin")}
       />
       <NumberInput
         className={styles.numberInputMax}
         placeholder="До"
-        max={120}
+        max={12000}
         min={0}
+        step={500}
         {...form.getInputProps("salaryMax")}
       />
 

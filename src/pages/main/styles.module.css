@@ -4,3 +4,8 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+/*later change class*/
+.rightSide {
+    flex-grow: 1;
+}

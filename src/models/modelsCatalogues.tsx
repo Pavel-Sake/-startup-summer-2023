@@ -1,4 +1,3 @@
-import { ServerResponse } from "./modelsVacancies";
 
 export interface ServerResponseCatalogues {
   title_rus: string

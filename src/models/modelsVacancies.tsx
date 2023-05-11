@@ -163,7 +163,7 @@ export interface IVacancy {
   video?: Video
 }
 
-export interface ServerResponse {
+export interface ServerResponseVacancies {
   objects: IVacancy[]
   total: number
   more: boolean

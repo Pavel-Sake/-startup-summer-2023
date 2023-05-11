@@ -8,6 +8,7 @@ import { SearchInput } from "../../components/searchInput/SearchInput";
 
 import styles from "./styles.module.css";
 import commonStyles from "../../commonStyles/styles.module.css";
+import { useAppSelector } from "../../hooks/redux";
 
 
 const obj = {
@@ -16,7 +17,9 @@ const obj = {
 };
 
 function Main() {
-  
+
+  const { cataloguesKey, salaryMin, salaryMax } = useAppSelector(state => state.vacancyFilterReducer);
+
   
   // useEffect(() => {
   //   const accessKey = localStorage.getItem("key");
@@ -32,14 +35,14 @@ function Main() {
 
   // const { data, error, isLoading } = useGetVacanciesQuery(obj);
 
-  const { data, error, isLoading } = useGetCataloguesQuery("text");
-
+  // const { data, error, isLoading } = useGetCataloguesQuery("text");
 
 
   return (
     <main className={`${styles.main} ${commonStyles.wrapper}`}>
       <Form />
-      <div>
+      {/*later change class rightSide*/}
+      <div className={styles.rightSide}>
         <SearchInput />
         {/*{*/}
         {/*  !isLoading ? <JobVacancy data={data} /> : <div>Loading</div>*/}
