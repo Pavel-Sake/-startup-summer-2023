@@ -17,6 +17,7 @@ function useCatalogues(): IStateForSelect[] {
   if (data) {
     const newCataloguesForSelect: IStateForSelect[] = [];
 
+
     data.forEach((item) => {
 
       const obj = {

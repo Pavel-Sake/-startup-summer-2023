@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { TextInput, Button } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 
@@ -7,7 +7,7 @@ function SearchInput() {
   const ref = useRef<HTMLInputElement>(null);
 
   function handleClickInput(): void {
-    console.log(ref.current!.value)
+    console.log(ref.current!.value);
   }
   
   return (

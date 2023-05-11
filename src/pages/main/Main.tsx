@@ -33,9 +33,8 @@ function Main() {
   // }, []);
   
 
-  // const { data, error, isLoading } = useGetVacanciesQuery(obj);
+   const { data, error, isLoading } = useGetVacanciesQuery(obj);
 
-  // const { data, error, isLoading } = useGetCataloguesQuery("text");
 
 
   return (
@@ -44,9 +43,9 @@ function Main() {
       {/*later change class rightSide*/}
       <div className={styles.rightSide}>
         <SearchInput />
-        {/*{*/}
-        {/*  !isLoading ? <JobVacancy data={data} /> : <div>Loading</div>*/}
-        {/*}*/}
+        {
+          !isLoading ? <JobVacancy data={data} /> : <div>Loading</div>
+        }
       </div>
 
 

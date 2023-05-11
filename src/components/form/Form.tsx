@@ -20,8 +20,7 @@ function Form() {
   const { setFilterForm } = vacancyFilterAction;
   const dispatch = useAppDispatch();
 
-  const cataloguesForSelect = useCatalogues();
-
+  // const cataloguesForSelect = useCatalogues();
 
   const form = useForm({
     initialValues: {
@@ -29,15 +28,12 @@ function Form() {
       salaryMin: "",
       salaryMax: "",
     },
-
     validate: {
-
     },
   });
 
   function handleSubmitForm(values: IFilter) {
     dispatch(setFilterForm(values));
-
   }
 
   return (
@@ -48,14 +44,14 @@ function Form() {
           Сбросить все &times; &#10006;
         </button>
       </div>
-      <Select
-        className={styles.select}
-        label="Отрасль"
-        placeholder="Выберите отрасль"
-        rightSection={<IconChevronDown size="1rem" />}
-        data={cataloguesForSelect}
-        {...form.getInputProps("cataloguesKey")}
-      />
+      {/*<Select*/}
+      {/*  className={styles.select}*/}
+      {/*  label="Отрасль"*/}
+      {/*  placeholder="Выберите отрасль"*/}
+      {/*  rightSection={<IconChevronDown size="1rem" />}*/}
+      {/*  data={cataloguesForSelect}*/}
+      {/*  {...form.getInputProps("cataloguesKey")}*/}
+      {/*/>*/}
 
       <NumberInput
         label="Оклад"

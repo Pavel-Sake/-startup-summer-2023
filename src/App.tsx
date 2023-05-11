@@ -7,6 +7,7 @@ import { NotFound } from "./pages/notFound/NotFound";
 import { Favorites } from "./pages/favorites/Favorites";
 import { Routes, Route } from "react-router-dom";
 import { RootLayout } from "./layout/RootLayout";
+import {Vacancy} from "./pages/vacancy/Vacancy";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Main />} />
+          <Route path="/:id" element={<Vacancy />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="*" element={<NotFound />} />
         </Route>
