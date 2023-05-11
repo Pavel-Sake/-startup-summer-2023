@@ -5,17 +5,19 @@ import locationImg from "../../assets/icons/locationImg.png";
 
 import starWhite from "../../assets/icons/starWhite.png";
 // import starBlue from "../../assets/icons/starBlue.png";
+import { Link } from "react-router-dom";
 
 type MyProps = {
   data: any;
 }
 
 function JobVacancyItem({ data }: MyProps) {
+  const vacancyId = `/${data.id}`;
 
   return (
     <li className={styles.item}>
       <div>
-        <div className={styles.name}>{data.profession}</div>
+        <Link className={styles.name} to={vacancyId}>{data.profession}</Link>
         <div className={styles.blockRow}>
           <p className={styles.salary}>з/п от {data.payment_from} rub</p>
           <p className={styles.mark}>&bull;</p>

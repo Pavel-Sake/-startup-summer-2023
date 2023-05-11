@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "../../components/form/Form";
-import { JobVacancy } from "../../components/jobVacancy/JobVacancy";
+import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
 import { useGetVacanciesQuery, useGetAccessTokenQuery, useGetCataloguesQuery } from "../../services/startupSummerApi";
 // import { fetchGetAccessKey } from "../../services/getAccessKey";
 import { SearchInput } from "../../components/searchInput/SearchInput";
@@ -33,8 +33,7 @@ function Main() {
   // }, []);
   
 
-   const { data, error, isLoading } = useGetVacanciesQuery(obj);
-
+  const { data, error, isLoading } = useGetVacanciesQuery(obj);
 
 
   return (
@@ -44,7 +43,7 @@ function Main() {
       <div className={styles.rightSide}>
         <SearchInput />
         {
-          !isLoading ? <JobVacancy data={data} /> : <div>Loading</div>
+          !isLoading ? <JobVacancyList data={data} /> : <div>Loading</div>
         }
       </div>
 

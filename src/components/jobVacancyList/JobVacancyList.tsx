@@ -8,7 +8,7 @@ type MyProps = {
   data: any;
 }
 
-function JobVacancy({ data }: MyProps) {
+function JobVacancyList({ data }: MyProps) {
 
   if (!data) {
     return null;
@@ -25,4 +25,4 @@ function JobVacancy({ data }: MyProps) {
   );
 }
 
-export { JobVacancy };
+export { JobVacancyList };
