@@ -36,7 +36,7 @@ export const startupSummerApi = createApi({
     }),
 
     getVacancies: builder.query<ServerResponseVacancies, obj>({
-      query: (data: obj) => `vacancies/?t=4&page=${data.page}&count=${data.count}`,
+      query: (data: obj) => `vacancies/?published=1&page=${data.page}&count=${data.count}`,
     }),
 
     getVacancy: builder.query<ServerResponseVacancy, string | undefined >({

@@ -12,9 +12,7 @@
     background: #FFFFFF;
 }
 
-.name {
-    margin-bottom: 12px;
-
+.nameLink {
     /*font-family: 'Inter';*/
     font-style: normal;
     font-weight: 600;
@@ -24,25 +22,52 @@
     color: #5E96FC;
 }
 
-.blockRow {
-    margin-bottom: 12px;
+.name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+}
 
+.blockRow {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 
+.blockRow--size-m {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.blockRow--size-s {
+
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+
+
 .salary {
     margin-right: 12px;
 
     /*font-family: 'Inter';*/
     font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
     line-height: 20px;
 
     color: #232134;
+}
+
+.salary--size-m {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.salary--size-s {
+    font-weight: 700;
+    font-size: 20px;
 }
 
 
@@ -62,10 +87,17 @@
     /*font-family: 'Inter';*/
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
     line-height: 20px;
 
     color: #232134;
+}
+
+.typeOfWork--size-m {
+    font-size: 16px;
+}
+
+.typeOfWork--size-s {
+    font-size: 20px;
 }
 
 .locationImg {

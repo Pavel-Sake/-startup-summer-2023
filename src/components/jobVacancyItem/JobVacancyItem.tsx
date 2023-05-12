@@ -9,19 +9,44 @@ import { Link } from "react-router-dom";
 
 type MyProps = {
   data: any;
+  stileSize: string;
+  isLink: boolean
 }
 
-function JobVacancyItem({ data }: MyProps) {
+const style: any = {
+  sizeM: {
+    typeOfWork: "typeOfWork--size-m",
+    salary: "salary--size-m",
+    blockRow: "blockRow--size-m"
+  },
+  sizeS: {
+    typeOfWork: "typeOfWork--size-s",
+    salary: "salary--size-s",
+    blockRow: "blockRow--size-s"
+  }
+};
+
+
+function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
   const vacancyId = `/${data.id}`;
+
+  const typeOfWork = style[stileSize].typeOfWork;
+  const salary = style[stileSize].salary;
+  const blockRow = style[stileSize].blockRow;
+
 
   return (
     <li className={styles.item}>
       <div>
-        <Link className={styles.name} to={vacancyId}>{data.profession}</Link>
-        <div className={styles.blockRow}>
-          <p className={styles.salary}>з/п от {data.payment_from} rub</p>
+        {
+          isLink ?
+            <Link className={styles.nameLink} to={vacancyId}>{data.profession}</Link> :
+            <div className={styles.name}>{data.profession}</div>
+        }
+        <div className={`${styles.blockRow} ${styles[blockRow]}`}>
+          <p className={`${styles.salary} ${styles[salary]}`}>з/п от {data.payment_from} rub</p>
           <p className={styles.mark}>&bull;</p>
-          <p className={styles.typeOfWork}>{data.type_of_work.title}</p>
+          <p className={`${styles.typeOfWork} ${styles[typeOfWork]}`}>{data.type_of_work.title}</p>
         </div>
         <div className={styles.blockRow}>
           <img className={styles.locationImg} src={locationImg} alt="location img" />

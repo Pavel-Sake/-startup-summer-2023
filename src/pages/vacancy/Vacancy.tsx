@@ -1,8 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { JobVacancyItem } from "../../components/jobVacancyItem/JobVacancyItem";
+
+import { useGetVacancyQuery } from "../../services/startupSummerApi";
 
 import styles from "./styles.module.css";
-import { useGetVacancyQuery } from "../../services/startupSummerApi";
+import stylesCommon from "../../commonStyles/styles.module.css"
 
 function Vacancy() {
 
@@ -12,11 +15,23 @@ function Vacancy() {
 
 
   return (
-
-    <div>
-      <div>{vacancyId}</div>
+    <div className={`${stylesCommon.wrapperSizeM} ${styles.vacancy}`}>
       {
-        error ? <div>error</div> : <div>ok</div>
+        error ? (
+          <div className={styles.error}>Такой викансии нет</div>
+        ) : isLoading ? (
+          <div>loading</div>
+        ) : data ? (
+          <div>
+            <JobVacancyItem data={data} stileSize="sizeS" isLink={false} />
+            <div className={styles.description}>
+              <div className={styles.tex} dangerouslySetInnerHTML={{
+                __html: `${data.vacancyRichText}`,
+              }} />
+            </div>
+          </div>
+        ) :
+          null
       }
     </div>
   );

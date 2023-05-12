@@ -18,7 +18,7 @@ function JobVacancyList({ data }: MyProps) {
     <ul className={styles.listVacancy}>
       {
         data.objects.map((item: any) => {
-          return <JobVacancyItem key={item.id} data={item} />;
+          return <JobVacancyItem key={item.id} data={item} stileSize="sizeM" isLink={true} />;
         })
       }
     </ul>
