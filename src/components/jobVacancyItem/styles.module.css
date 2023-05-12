@@ -117,4 +117,11 @@
 .buttonFavorite {
     border: none;
     background: inherit;
+    cursor: pointer;
+}
+
+
+.buttonFavoriteImg:hover {
+
+    transform: scale(1.1);
 }

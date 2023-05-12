@@ -6,6 +6,7 @@ import locationImg from "../../assets/icons/locationImg.png";
 import starWhite from "../../assets/icons/starWhite.png";
 // import starBlue from "../../assets/icons/starBlue.png";
 import { Link } from "react-router-dom";
+import {addDeleteFavorites} from "../../utilities/addDeleteFavorites";
 
 type MyProps = {
   data: any;
@@ -34,6 +35,9 @@ function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
   const salary = style[stileSize].salary;
   const blockRow = style[stileSize].blockRow;
 
+  function handleClickToSaveInStorage(id: number): void {
+    addDeleteFavorites(id);
+  }
 
   return (
     <li className={styles.item}>
@@ -53,8 +57,8 @@ function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
           <p className={styles.city}>{data.town.title}</p>
         </div>
       </div>
-      <button className={styles.buttonFavorite}>
-        <img src={starWhite} alt="star icon" />
+      <button className={styles.buttonFavorite} onClick={() => handleClickToSaveInStorage(data.id)}>
+        <img className={styles.buttonFavoriteImg} src={starWhite} alt="star icon" />
       </button>
     </li>
   );
