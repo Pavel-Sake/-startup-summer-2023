@@ -1,0 +1,25 @@
+.emptyPage {
+    padding-top: 120px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.images {
+    width: 240px;
+    height: 230px;
+    margin-bottom: 40px;
+}
+
+.text {
+    margin-bottom: 32px;
+    /*font-family: 'Inter';*/
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #343A40;
+}
