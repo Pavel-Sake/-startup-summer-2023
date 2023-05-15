@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./styles.module.css";
 import locationImg from "../../assets/icons/locationImg.png";
 
-import starWhite from "../../assets/icons/starWhite.png";
-// import starBlue from "../../assets/icons/starBlue.png";
 import { Link } from "react-router-dom";
-import {addDeleteFavorites} from "../../utilities/addDeleteFavorites";
+import { addDeleteFavorites } from "../../utilities/addDeleteFavorites";
+import { getFavoritesId } from "../../utilities/getFavoritesId";
+import { isFavorite } from "../../utilities/isFavorite";
+
+import starWhite from "../../assets/icons/starWhite.png";
+import starBlue from "../../assets/icons/starBlue.png";
+
 
 type MyProps = {
   data: any;
   stileSize: string;
   isLink: boolean
 }
+
 
 const style: any = {
   sizeM: {
@@ -29,15 +34,27 @@ const style: any = {
 
 
 function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
-  const vacancyId = `/${data.id}`;
 
+  const favoritesIds = getFavoritesId();
+  const isVacancyFavoriteI = isFavorite(favoritesIds, data.id);
+
+  const [isVacancyFavorite, setIsVacancyFavorite] = useState<boolean>(isVacancyFavoriteI);
+
+  const vacancyId = `/${data.id}`;
   const typeOfWork = style[stileSize].typeOfWork;
   const salary = style[stileSize].salary;
   const blockRow = style[stileSize].blockRow;
 
   function handleClickToSaveInStorage(id: number): void {
     addDeleteFavorites(id);
+
+    const favoritesIds = getFavoritesId();
+    const isVacancyFavorite = isFavorite(favoritesIds, id);
+    setIsVacancyFavorite(isVacancyFavorite);
   }
+
+  const imgForButton = isVacancyFavorite ? starBlue : starWhite;
+
 
   return (
     <li className={styles.item}>
@@ -58,7 +75,7 @@ function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
         </div>
       </div>
       <button className={styles.buttonFavorite} onClick={() => handleClickToSaveInStorage(data.id)}>
-        <img className={styles.buttonFavoriteImg} src={starWhite} alt="star icon" />
+        <img className={styles.buttonFavoriteImg} src={imgForButton} alt="star icon" />
       </button>
     </li>
   );
