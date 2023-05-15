@@ -23,3 +23,14 @@
 
     color: #343A40;
 }
+
+.buttonLink {
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 155%;
+
+    color: #3B7CD3;
+}

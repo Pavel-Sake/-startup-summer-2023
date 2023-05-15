@@ -14,7 +14,7 @@ a {
 }
 
 .active {
-    color: black;
     text-decoration: underline;
+    color: #5E96FC;
 }
 

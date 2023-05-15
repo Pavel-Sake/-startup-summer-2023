@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL, LOGIN, PASSWORD, CLIENT_ID, CLIENT_SECRET, SECRET_KEY } from "../constans/constans";
 import { ServerResponseVacancies } from "../models/modelsVacancies";
 import { ServerResponseCatalogues } from "../models/modelsCatalogues";
-import {ServerResponseVacancy} from "../models/modelsVacancy";
+import { ServerResponseVacancy } from "../models/modelsVacancy";
 
 
 // const accessKey = localStorage.getItem("key");
@@ -42,11 +42,20 @@ export const startupSummerApi = createApi({
     getVacancy: builder.query<ServerResponseVacancy, string | undefined >({
       query: (vacancyId: string | undefined) => `vacancies/${vacancyId}`,
     }),
+    // 46372437
+
+    getVacanciesById: builder.query<ServerResponseVacancies, string>({
+      query: (ids: string) => `vacancies/?${ids}`,
+    }),
 
   }),
 });
 
 
-export const { useGetVacanciesQuery, useGetAccessTokenQuery, useGetCataloguesQuery, useGetVacancyQuery } = startupSummerApi;
+export const {
+  useGetVacanciesQuery, useGetAccessTokenQuery,
+  useGetCataloguesQuery, useGetVacancyQuery,
+  useGetVacanciesByIdQuery
+} = startupSummerApi;
 
 
