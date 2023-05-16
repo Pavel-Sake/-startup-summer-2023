@@ -19,6 +19,7 @@ const obj = {
 function Main() {
 
   const { cataloguesKey, salaryMin, salaryMax } = useAppSelector(state => state.vacancyFilterReducer);
+  const { searchWords } = useAppSelector(state => state.searchInputSliceReducer);
 
   
   // useEffect(() => {

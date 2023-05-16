@@ -20,7 +20,7 @@ function Form() {
   const { setFilterForm } = vacancyFilterAction;
   const dispatch = useAppDispatch();
 
-  // const cataloguesForSelect = useCatalogues();
+   //const cataloguesForSelect = useCatalogues();
 
   const form = useForm({
     initialValues: {

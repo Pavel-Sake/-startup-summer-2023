@@ -35,8 +35,21 @@ export const startupSummerApi = createApi({
       query: (text: string) => "catalogues/",
     }),
 
+    // getVacancies: builder.query<ServerResponseVacancies, obj>({
+    //   query: (data: obj) => `vacancies/?published=1&page=${data.page}&count=${data.count}&payment_from=10000&payment_to=30000&no_agreement=1`,
+    // }),
     getVacancies: builder.query<ServerResponseVacancies, obj>({
-      query: (data: obj) => `vacancies/?published=1&page=${data.page}&count=${data.count}`,
+      query: (data: obj) => ({
+        url: "vacancies/?published=1",
+        params: {
+          page: "1",
+          count: "6",
+          payment_from: "10000",
+          payment_to: "30000",
+          no_agreement: "1",
+          keyword: "продавец"
+        }
+      }),
     }),
 
     getVacancy: builder.query<ServerResponseVacancy, string | undefined >({

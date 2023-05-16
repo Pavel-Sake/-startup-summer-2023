@@ -9,7 +9,7 @@ interface IFilter {
 export const initialState: IFilter = {
   cataloguesKey: "",
   salaryMin: "",
-  salaryMax: ""
+  salaryMax: "",
 };
 
 export const vacancySlice = createSlice({
