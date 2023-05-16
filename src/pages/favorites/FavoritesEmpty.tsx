@@ -5,7 +5,6 @@ import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 function FavoritesEmpty() {
-  
   return (
     <div className={styles.emptyPage}>
       <img className={styles.images} src={favoritesImg} alt="favorites img" />
@@ -16,5 +15,6 @@ function FavoritesEmpty() {
     </div>
   );
 }
+
 
 export { FavoritesEmpty };

@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { startupSummerApi } from "../services/startupSummerApi";
 import { vacancyFilterReducer } from "./reducers/cataloguesFromSlice";
+import { deleteFavoriteReducer } from "./reducers/deleteFavoriteSlice";
 
 const rootReducer = combineReducers({
   vacancyFilterReducer,
+  deleteFavoriteReducer,
 
   [startupSummerApi.reducerPath]: startupSummerApi.reducer,
 });

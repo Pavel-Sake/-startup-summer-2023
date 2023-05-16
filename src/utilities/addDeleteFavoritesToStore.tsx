@@ -1,6 +1,6 @@
 import { VACANCY_IDS } from "../constans/constans";
 
-function addDeleteFavorites(id: number) {
+function addDeleteFavoritesToStore(id: number) {
 
   const vacancyIds = localStorage.getItem(VACANCY_IDS);
   let newVacancyIds = [];
@@ -25,9 +25,8 @@ function addDeleteFavorites(id: number) {
       newVacancyIds.splice(indexId, 1);
       localStorage.setItem(VACANCY_IDS, JSON.stringify(newVacancyIds));
     }
-
   }
 }
 
 
-export { addDeleteFavorites };
+export { addDeleteFavoritesToStore };

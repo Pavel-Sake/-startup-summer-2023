@@ -4,12 +4,14 @@ import styles from "./styles.module.css";
 import locationImg from "../../assets/icons/locationImg.png";
 
 import { Link } from "react-router-dom";
-import { addDeleteFavorites } from "../../utilities/addDeleteFavorites";
+import { addDeleteFavoritesToStore } from "../../utilities/addDeleteFavoritesToStore";
 import { getFavoritesId } from "../../utilities/getFavoritesId";
 import { isFavorite } from "../../utilities/isFavorite";
 
 import starWhite from "../../assets/icons/starWhite.png";
 import starBlue from "../../assets/icons/starBlue.png";
+import {deleteFavoriteAction} from "../../store/reducers/deleteFavoriteSlice";
+import {useAppDispatch} from "../../hooks/redux";
 
 
 type MyProps = {
@@ -35,6 +37,11 @@ const style: any = {
 
 function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
 
+  const {deleteFavorites} = deleteFavoriteAction
+  const dispatch = useAppDispatch();
+
+
+
   const favoritesIds = getFavoritesId();
   const isVacancyFavoriteI = isFavorite(favoritesIds, data.id);
 
@@ -45,16 +52,18 @@ function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
   const salary = style[stileSize].salary;
   const blockRow = style[stileSize].blockRow;
 
+  //change function name later
   function handleClickToSaveInStorage(id: number): void {
-    addDeleteFavorites(id);
+    addDeleteFavoritesToStore(id);
 
     const favoritesIds = getFavoritesId();
     const isVacancyFavorite = isFavorite(favoritesIds, id);
     setIsVacancyFavorite(isVacancyFavorite);
+
+    dispatch(deleteFavorites());
   }
 
   const imgForButton = isVacancyFavorite ? starBlue : starWhite;
-
 
   return (
     <li className={styles.item}>
