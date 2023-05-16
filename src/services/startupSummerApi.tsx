@@ -42,7 +42,6 @@ export const startupSummerApi = createApi({
     getVacancy: builder.query<ServerResponseVacancy, string | undefined >({
       query: (vacancyId: string | undefined) => `vacancies/${vacancyId}`,
     }),
-    // 46372437
 
     getVacanciesById: builder.query<ServerResponseVacancies, string>({
       query: (ids: string) => `vacancies/?${ids}`,
