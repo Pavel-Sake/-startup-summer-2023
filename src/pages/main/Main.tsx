@@ -9,17 +9,16 @@ import { SearchInput } from "../../components/searchInput/SearchInput";
 import styles from "./styles.module.css";
 import commonStyles from "../../commonStyles/styles.module.css";
 import { useAppSelector } from "../../hooks/redux";
+import { getRequestParams } from "../../utilities/getRequestParams";
 
-
-const obj = {
-  page: 4,
-  count: 4
-};
 
 function Main() {
 
-  const { cataloguesKey, salaryMin, salaryMax } = useAppSelector(state => state.vacancyFilterReducer);
+  const dataFromForm = useAppSelector(state => state.vacancyFilterReducer);
   const { searchWords } = useAppSelector(state => state.searchInputSliceReducer);
+  
+
+  const requestParams = getRequestParams(dataFromForm, searchWords);
 
   
   // useEffect(() => {
@@ -31,10 +30,10 @@ function Main() {
   //         localStorage.setItem("key", res.data.access_token);
   //       });
   //   }
-  // }, []);
-  
+  // }
 
-  const { data, error, isLoading } = useGetVacanciesQuery(obj);
+
+  const { data, error, isLoading } = useGetVacanciesQuery(requestParams);
 
 
   return (

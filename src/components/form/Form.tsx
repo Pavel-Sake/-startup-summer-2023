@@ -20,7 +20,7 @@ function Form() {
   const { setFilterForm } = vacancyFilterAction;
   const dispatch = useAppDispatch();
 
-   //const cataloguesForSelect = useCatalogues();
+   const cataloguesForSelect = useCatalogues();
 
   const form = useForm({
     initialValues: {
@@ -29,6 +29,10 @@ function Form() {
       salaryMax: "",
     },
     validate: {
+      // salaryMax: (value) => {
+      //   console.log("value")
+      //   return "dgdfsdf"
+      // }
     },
   });
 
@@ -44,19 +48,19 @@ function Form() {
           Сбросить все &times; &#10006;
         </button>
       </div>
-      {/*<Select*/}
-      {/*  className={styles.select}*/}
-      {/*  label="Отрасль"*/}
-      {/*  placeholder="Выберите отрасль"*/}
-      {/*  rightSection={<IconChevronDown size="1rem" />}*/}
-      {/*  data={cataloguesForSelect}*/}
-      {/*  {...form.getInputProps("cataloguesKey")}*/}
-      {/*/>*/}
+      <Select
+        className={styles.select}
+        label="Отрасль"
+        placeholder="Выберите отрасль"
+        rightSection={<IconChevronDown size="1rem" />}
+        data={cataloguesForSelect}
+        {...form.getInputProps("cataloguesKey")}
+      />
 
       <NumberInput
         label="Оклад"
         placeholder="От"
-        max={12000}
+        max={500000}
         min={0}
         step={500}
         {...form.getInputProps("salaryMin")}
@@ -64,7 +68,7 @@ function Form() {
       <NumberInput
         className={styles.numberInputMax}
         placeholder="До"
-        max={12000}
+        max={500000}
         min={0}
         step={500}
         {...form.getInputProps("salaryMax")}

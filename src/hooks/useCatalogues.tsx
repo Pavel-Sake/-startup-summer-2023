@@ -19,7 +19,6 @@ function useCatalogues(): IStateForSelect[] {
 
 
     data.forEach((item) => {
-
       const obj = {
         value: `${item.key}`,
         label: item.title_rus,
