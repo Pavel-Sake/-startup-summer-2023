@@ -12,6 +12,7 @@ import { FavoritesEmpty } from "./FavoritesEmpty";
 import { useAppSelector } from "../../hooks/redux";
 import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
 import { getRequestParamsFavorite } from "../../utilities/getRequestParamsFavorite";
+import { Loader } from "../../components/loader/Loader";
 
 
 function Favorites() {
@@ -39,7 +40,7 @@ function Favorites() {
           <>
             {
               error ? (<div>error</div>)
-                : isLoading ? (<div>loading</div>)
+                : isLoading ? (<Loader />)
                   : data ? (
                     <>
                       <JobVacancyList data={data} />

@@ -4,6 +4,7 @@ import { JobVacancyItem } from "../../components/jobVacancyItem/JobVacancyItem";
 import { NotFound } from "../notFound/NotFound";
 
 import { useGetVacancyQuery } from "../../services/startupSummerApi";
+import { Loader } from "../../components/loader/Loader";
 
 import styles from "./styles.module.css";
 import stylesCommon from "../../commonStyles/styles.module.css";
@@ -27,7 +28,7 @@ function Vacancy() {
         error ? (
           <NotFound />
         ) : isLoading ? (
-          <div>loading</div>
+          <Loader />
         ) : data ? (
           <div>
             <JobVacancyItem data={data} stileSize="sizeS" isLink={false} />

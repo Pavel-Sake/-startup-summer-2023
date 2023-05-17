@@ -4,6 +4,7 @@ import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
 import { useGetVacanciesQuery, useGetAccessTokenQuery, useGetCataloguesQuery } from "../../services/startupSummerApi";
 // import { fetchGetAccessKey } from "../../services/getAccessKey";
 import { SearchInput } from "../../components/searchInput/SearchInput";
+import { Loader } from "../../components/loader/Loader";
 
 
 import styles from "./styles.module.css";
@@ -45,7 +46,7 @@ function Main() {
       <div className={styles.rightSide}>
         <SearchInput />
         {
-          !isLoading ? <JobVacancyList data={data} /> : <div>Loading</div>
+          !isLoading ? <JobVacancyList data={data} /> : <Loader />
         }
         <PaginationComponent place="main" />
       </div>
