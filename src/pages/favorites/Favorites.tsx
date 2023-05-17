@@ -47,7 +47,6 @@ function Favorites() {
                       {/*change later place name*/}
                       <PaginationComponent place="favorite" />
                     </>
-
                   )
                     : null
             }
