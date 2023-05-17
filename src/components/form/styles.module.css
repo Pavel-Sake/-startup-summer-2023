@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Inter";
+    src: url("../../fonts/Inter-Bold.ttf") format("truetype");
+    src: url("../../fonts/Inter-Medium.ttf") format("truetype");
+    font-style: normal;
+}
+
+
 .form {
     /*width: 50%;*/
     width: 315px;
@@ -19,6 +27,7 @@
 }
 
 .clearLabel {
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -30,7 +39,7 @@
     border: none;
     background: inherit;
 
-    /*font-family: 'Inter';*/
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
