@@ -20,7 +20,7 @@ export const vacancySlice = createSlice({
       state.cataloguesKey = action.payload.cataloguesKey;
       state.salaryMin = action.payload.salaryMin;
       state.salaryMax = action.payload.salaryMax;
-    }
+    },
   }
 });
 

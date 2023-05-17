@@ -1,9 +1,9 @@
 import { IRequestParams, IRequestParamsFromForm } from "../models/modelsRequestParams";
 
-function getRequestParams(dataFromForm: IRequestParamsFromForm, searchWords: string) {
+function getRequestParams(dataFromForm: IRequestParamsFromForm, searchWords: string, pageNumber: number) {
 
   const requestParams: IRequestParams = {
-    page: 4,
+    page: pageNumber,
     count: 4,
     cataloguesKey: "",
     salaryMin: "",

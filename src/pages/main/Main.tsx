@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "../../components/form/Form";
 import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
 import { useGetVacanciesQuery, useGetAccessTokenQuery, useGetCataloguesQuery } from "../../services/startupSummerApi";
@@ -10,15 +10,17 @@ import styles from "./styles.module.css";
 import commonStyles from "../../commonStyles/styles.module.css";
 import { useAppSelector } from "../../hooks/redux";
 import { getRequestParams } from "../../utilities/getRequestParams";
+import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
 
 
 function Main() {
 
   const dataFromForm = useAppSelector(state => state.vacancyFilterReducer);
   const { searchWords } = useAppSelector(state => state.searchInputSliceReducer);
-  
+  const { pageNumber } = useAppSelector(state => state.pageNumberReducer);
 
-  const requestParams = getRequestParams(dataFromForm, searchWords);
+
+  const requestParams = getRequestParams(dataFromForm, searchWords, pageNumber);
 
   
   // useEffect(() => {
@@ -34,7 +36,7 @@ function Main() {
 
 
   const { data, error, isLoading } = useGetVacanciesQuery(requestParams);
-
+  
 
   return (
     <main className={`${styles.main} ${commonStyles.wrapper}`}>
@@ -45,8 +47,8 @@ function Main() {
         {
           !isLoading ? <JobVacancyList data={data} /> : <div>Loading</div>
         }
+        <PaginationComponent place="main" />
       </div>
-
 
     </main>
   );

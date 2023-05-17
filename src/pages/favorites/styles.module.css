@@ -34,3 +34,10 @@
 
     color: #3B7CD3;
 }
+
+.favorite {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}

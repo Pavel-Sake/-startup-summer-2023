@@ -10,20 +10,30 @@ import { getStringBasedArrForRequest } from "../../utilities/getStringBasedArrFo
 import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
 import { FavoritesEmpty } from "./FavoritesEmpty";
 import { useAppSelector } from "../../hooks/redux";
-import { deleteFavoriteReducer } from "../../store/reducers/deleteFavoriteSlice";
+import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
+import {getRequestParamsFavorite} from "../../utilities/getRequestParamsFavorite";
+
+
 
 
 function Favorites() {
   
   const favoritesId = getFavoritesId();
   const stringForRequest = getStringBasedArrForRequest(favoritesId);
-  const { data, error, isLoading } = useGetVacanciesByIdQuery(stringForRequest);
+
+  const { pageNumber } = useAppSelector(state => state.pageNumberFavoriteReducer)
+
+
+  const params = getRequestParamsFavorite(stringForRequest, pageNumber)
+
+  const { data, error, isLoading } = useGetVacanciesByIdQuery(params);
+
 
   const reRenderPage = useAppSelector(state => state.deleteFavoriteReducer);
-  
+
   
   return (
-    <div className={commonStyles.wrapperSizeM}>
+    <div className={`${commonStyles.wrapperSizeM} ${styles.favorite}`}>
       {
         !favoritesId.length ?
           <FavoritesEmpty />
@@ -33,7 +43,12 @@ function Favorites() {
               error ? (<div>error</div>)
                 : isLoading ? (<div>loading</div>)
                   : data ? (
-                    <JobVacancyList data={data} />
+                    <>
+                      <JobVacancyList data={data} />
+                      {/*change later place name*/}
+                      <PaginationComponent place="favorite"/>
+                    </>
+
                   )
                     : null
             }

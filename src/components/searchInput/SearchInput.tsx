@@ -1,8 +1,10 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { TextInput, Button } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { searchInputSliceAction } from "../../store/reducers/searchSlice";
+import styles from "./styles.module.css";
+
 
 function SearchInput() {
 
@@ -22,7 +24,7 @@ function SearchInput() {
   }
   
   return (
-    <div>
+    <div className={styles.searchInputWrapper}>
       <TextInput
         onChange={(event) => handleTextInput(event)}
         value={textInputValue}

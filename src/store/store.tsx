@@ -3,11 +3,15 @@ import { startupSummerApi } from "../services/startupSummerApi";
 import { vacancyFilterReducer } from "./reducers/cataloguesFromSlice";
 import { deleteFavoriteReducer } from "./reducers/deleteFavoriteSlice";
 import { searchInputSliceReducer } from "./reducers/searchSlice";
+import { pageNumberReducer } from "./reducers/numberPageSlice";
+import { pageNumberFavoriteReducer } from "./reducers/numberPageFavoriteSlice";
 
 const rootReducer = combineReducers({
   vacancyFilterReducer,
   searchInputSliceReducer,
   deleteFavoriteReducer,
+  pageNumberReducer,
+  pageNumberFavoriteReducer,
 
   [startupSummerApi.reducerPath]: startupSummerApi.reducer,
 });

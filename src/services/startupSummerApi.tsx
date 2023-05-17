@@ -4,6 +4,7 @@ import { ServerResponseVacancies } from "../models/modelsVacancies";
 import { ServerResponseCatalogues } from "../models/modelsCatalogues";
 import { ServerResponseVacancy } from "../models/modelsVacancy";
 import {IRequestParams} from "../models/modelsRequestParams";
+import {IRequestParamsFavorite} from "../models/modelsRequestParamsFavorite";
 
 
 // const accessKey = localStorage.getItem("key");
@@ -58,27 +59,19 @@ export const startupSummerApi = createApi({
         }
       }),
     }),
-    // getVacancies: builder.query<ServerResponseVacancies, requestParamsType>({
-    //   query: (data: requestParamsType) => ({
-    //     url: "vacancies/?published=1",
-    //     params: {
-    //       page: "1",
-    //       count: 4,
-    //       payment_from: "10000",
-    //       payment_to: "50000",
-    //       no_agreement: "1",
-    //       keyword: "",
-    //       catalogues: "33"
-    //     }
-    //   }),
-    // }),
 
     getVacancy: builder.query<ServerResponseVacancy, string | undefined >({
       query: (vacancyId: string | undefined) => `vacancies/${vacancyId}`,
     }),
 
-    getVacanciesById: builder.query<ServerResponseVacancies, string>({
-      query: (ids: string) => `vacancies/?${ids}`,
+    getVacanciesById: builder.query<ServerResponseVacancies, IRequestParamsFavorite>({
+      query: (data: IRequestParamsFavorite) => ({
+        url: `vacancies/?published=1&${data.stringForRequest}&count=4`,
+        params: {
+          page: `${data.page}`,
+          count: `${data.count}`,
+        }
+      }),
     }),
 
   }),
