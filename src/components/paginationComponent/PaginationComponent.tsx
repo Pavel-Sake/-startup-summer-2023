@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Pagination } from "@mantine/core";
-import { useAppDispatch } from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import { pageNumberAction } from "../../store/reducers/numberPageSlice";
 import { pageNumberFavoriteAction } from "../../store/reducers/numberPageFavoriteSlice";
 
@@ -9,6 +9,11 @@ type MyProps = {
 }
 
 function PaginationComponent({ place }: MyProps) {
+
+  // const {pageNumber} = useAppSelector(state => state.pageNumberFavoriteReducer)
+  //
+  // console.log("pageNumber", pageNumber)
+
   const [activePage, setActivePage] = useState(1);
   const [total, setTotal] = useState(3);
 

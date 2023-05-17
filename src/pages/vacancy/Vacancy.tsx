@@ -1,11 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { JobVacancyItem } from "../../components/jobVacancyItem/JobVacancyItem";
+import { NotFound } from "../notFound/NotFound";
 
 import { useGetVacancyQuery } from "../../services/startupSummerApi";
 
 import styles from "./styles.module.css";
-import stylesCommon from "../../commonStyles/styles.module.css"
+import stylesCommon from "../../commonStyles/styles.module.css";
+
 
 function Vacancy() {
 
@@ -13,12 +15,17 @@ function Vacancy() {
 
   const { data, error, isLoading } = useGetVacancyQuery(vacancyId); // check the wrong ID with word
 
+  if (data) {
+    if (!data.id) {
+      return <NotFound />;
+    }
+  }
 
   return (
     <div className={`${stylesCommon.wrapperSizeM} ${styles.vacancy}`}>
       {
         error ? (
-          <div className={styles.error}>Такой викансии нет</div>
+          <NotFound />
         ) : isLoading ? (
           <div>loading</div>
         ) : data ? (

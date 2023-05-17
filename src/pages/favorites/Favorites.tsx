@@ -11,9 +11,7 @@ import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
 import { FavoritesEmpty } from "./FavoritesEmpty";
 import { useAppSelector } from "../../hooks/redux";
 import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
-import {getRequestParamsFavorite} from "../../utilities/getRequestParamsFavorite";
-
-
+import { getRequestParamsFavorite } from "../../utilities/getRequestParamsFavorite";
 
 
 function Favorites() {
@@ -21,10 +19,10 @@ function Favorites() {
   const favoritesId = getFavoritesId();
   const stringForRequest = getStringBasedArrForRequest(favoritesId);
 
-  const { pageNumber } = useAppSelector(state => state.pageNumberFavoriteReducer)
+  const { pageNumber } = useAppSelector(state => state.pageNumberFavoriteReducer);
 
 
-  const params = getRequestParamsFavorite(stringForRequest, pageNumber)
+  const params = getRequestParamsFavorite(stringForRequest, pageNumber);
 
   const { data, error, isLoading } = useGetVacanciesByIdQuery(params);
 
@@ -46,7 +44,7 @@ function Favorites() {
                     <>
                       <JobVacancyList data={data} />
                       {/*change later place name*/}
-                      <PaginationComponent place="favorite"/>
+                      <PaginationComponent place="favorite" />
                     </>
 
                   )

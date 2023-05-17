@@ -10,8 +10,8 @@ import { isFavorite } from "../../utilities/isFavorite";
 
 import starWhite from "../../assets/icons/starWhite.png";
 import starBlue from "../../assets/icons/starBlue.png";
- import {deleteFavoriteAction} from "../../store/reducers/deleteFavoriteSlice";
-import {useAppDispatch} from "../../hooks/redux";
+import { deleteFavoriteAction } from "../../store/reducers/deleteFavoriteSlice";
+import { useAppDispatch } from "../../hooks/redux";
 
 
 type MyProps = {
@@ -37,17 +37,15 @@ const style: any = {
 
 function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
 
-   const {deleteFavorites} = deleteFavoriteAction
+  const { deleteFavorites } = deleteFavoriteAction;
   const dispatch = useAppDispatch();
-
-
-
+   
   const favoritesIds = getFavoritesId();
   const isVacancyFavoriteI = isFavorite(favoritesIds, data.id);
 
   const [isVacancyFavorite, setIsVacancyFavorite] = useState<boolean>(isVacancyFavoriteI);
 
-  const vacancyId = `/${data.id}`;
+  const vacancyId = `/vacancy/${data.id}`;
   const typeOfWork = style[stileSize].typeOfWork;
   const salary = style[stileSize].salary;
   const blockRow = style[stileSize].blockRow;
