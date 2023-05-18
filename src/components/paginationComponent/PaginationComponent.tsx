@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Pagination } from "@mantine/core";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { pageNumberAction } from "../../store/reducers/numberPageSlice";
-import { pageNumberFavoriteAction } from "../../store/reducers/numberPageFavoriteSlice";
+import { useAppDispatch } from "../../hooks/redux";
 import { getActivePage } from "../../utilities/getActivePage";
+import { setPageNumberBasedOnPlace } from "../../utilities/setPageNumberBasedOnPlace";
 
 type MyProps = {
   place: string
@@ -12,12 +11,9 @@ type MyProps = {
 function PaginationComponent({ place }: MyProps) {
   
   const activePage = getActivePage(place);
-
   const [total, setTotal] = useState(3);
 
   const dispatch = useAppDispatch();
-  const { setPageNumber } = pageNumberAction;
-  const { setPageNumberFavorite } = pageNumberFavoriteAction;
 
   function handleChangePage(value: number) {
 
@@ -26,14 +22,8 @@ function PaginationComponent({ place }: MyProps) {
     } else {
       setTotal(value + 1);
     }
-
-
-    if (place === "main") {
-      dispatch(setPageNumber({ pageNumber: value - 1 }));
-
-    } else {
-      dispatch(setPageNumberFavorite({ pageNumber: value - 1 }));
-    }
+    
+    setPageNumberBasedOnPlace(place, value, dispatch);
   }
   
   return (
