@@ -1,10 +1,13 @@
 import React from "react";
-import styles from "./styles.module.css";
 import favoritesImg from "../../assets/icons/favorites.png";
 import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-function FavoritesEmpty() {
+import styles from "./styles.module.css";
+
+
+function EmptyVacancy() {
+  
   return (
     <div className={styles.emptyPage}>
       <img className={styles.images} src={favoritesImg} alt="favorites img" />
@@ -16,5 +19,4 @@ function FavoritesEmpty() {
   );
 }
 
-
-export { FavoritesEmpty };
+export { EmptyVacancy };

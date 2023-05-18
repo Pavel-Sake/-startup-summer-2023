@@ -2,6 +2,7 @@ import React from "react";
 import { JobVacancyItem } from "../jobVacancyItem/JobVacancyItem";
 
 import styles from "./styles.module.css";
+import {EmptyVacancy} from "../emptyVacancy/EmptyVacancy";
 
 
 type MyProps = {
@@ -12,6 +13,12 @@ function JobVacancyList({ data }: MyProps) {
 
   if (!data) {
     return null;
+  }
+
+  console.log("data", data.objects)
+
+  if (data.objects.length === 0) {
+    return <EmptyVacancy/>
   }
 
   return (

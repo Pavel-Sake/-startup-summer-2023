@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 function RootLayout() {
   
   return (
-    <div>
+    <div className={styles.rootLayout}>
       <Header />
       <Outlet />
     </div>

@@ -12,9 +12,41 @@
     font-style: normal;
 }
 
-.favorite {
+.emptyPage {
+    padding-top: 120px;
+    margin-bottom: 40px;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.images {
+    width: 240px;
+    height: 230px;
+    margin-bottom: 40px;
+}
+
+.text {
+    margin-bottom: 32px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #343A40;
+}
+
+.buttonLink {
+
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 155%;
+
+    color: #3B7CD3;
 }

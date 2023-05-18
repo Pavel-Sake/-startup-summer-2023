@@ -1,19 +1,17 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@mantine/core";
+import React from "react";
 import styles from "./styles.module.css";
 import commonStyles from "../../commonStyles/styles.module.css";
-import favoritesImg from "../../assets/icons/favorites.png";
 import { getFavoritesId } from "../../utilities/getFavoritesId";
 import { useGetVacanciesByIdQuery } from "../../services/startupSummerApi";
 import { getStringBasedArrForRequest } from "../../utilities/getStringBasedArrForRequest";
 import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
-import { FavoritesEmpty } from "./FavoritesEmpty";
 import { useAppSelector } from "../../hooks/redux";
 import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
 import { getRequestParamsFavorite } from "../../utilities/getRequestParamsFavorite";
 import { Loader } from "../../components/loader/Loader";
-import {PAGINATION_PLACE} from "../../constans/paginationPlace";
+import { PAGINATION_PLACE } from "../../constans/paginationPlace";
+
+import { EmptyVacancy } from "../../components/emptyVacancy/EmptyVacancy";
 
 
 function Favorites() {
@@ -36,7 +34,7 @@ function Favorites() {
     <div className={`${commonStyles.wrapperSizeM} ${styles.favorite}`}>
       {
         !favoritesId.length ?
-          <FavoritesEmpty />
+          <EmptyVacancy />
           :
           <>
             {
