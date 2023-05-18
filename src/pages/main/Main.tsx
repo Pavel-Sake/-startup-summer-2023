@@ -5,6 +5,7 @@ import { useGetVacanciesQuery, useGetAccessTokenQuery, useGetCataloguesQuery } f
 // import { fetchGetAccessKey } from "../../services/getAccessKey";
 import { SearchInput } from "../../components/searchInput/SearchInput";
 import { Loader } from "../../components/loader/Loader";
+import {PAGINATION_PLACE} from "../../constans/paginationPlace";
 
 
 import styles from "./styles.module.css";
@@ -48,7 +49,7 @@ function Main() {
         {
           !isLoading ? <JobVacancyList data={data} /> : <Loader />
         }
-        <PaginationComponent place="main" />
+        <PaginationComponent place={PAGINATION_PLACE.MAIN} />
       </div>
 
     </main>

@@ -5,13 +5,15 @@
     font-style: normal;
 }
 
-.logoBlock {
+.logo {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 
     margin-right: 280px;
+
+    cursor: pointer;
 }
 
 .lagoText {

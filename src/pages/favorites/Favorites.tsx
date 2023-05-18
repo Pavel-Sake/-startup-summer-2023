@@ -13,6 +13,7 @@ import { useAppSelector } from "../../hooks/redux";
 import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
 import { getRequestParamsFavorite } from "../../utilities/getRequestParamsFavorite";
 import { Loader } from "../../components/loader/Loader";
+import {PAGINATION_PLACE} from "../../constans/paginationPlace";
 
 
 function Favorites() {
@@ -45,7 +46,7 @@ function Favorites() {
                     <>
                       <JobVacancyList data={data} />
                       {/*change later place name*/}
-                      <PaginationComponent place="favorite" />
+                      <PaginationComponent place={PAGINATION_PLACE.FAVORITE} />
                     </>
                   )
                     : null

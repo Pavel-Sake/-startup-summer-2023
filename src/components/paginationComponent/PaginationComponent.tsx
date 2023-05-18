@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Pagination } from "@mantine/core";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { pageNumberAction } from "../../store/reducers/numberPageSlice";
 import { pageNumberFavoriteAction } from "../../store/reducers/numberPageFavoriteSlice";
+import { getActivePage } from "../../utilities/getActivePage";
 
 type MyProps = {
   place: string
 }
 
 function PaginationComponent({ place }: MyProps) {
+  
+  const activePage = getActivePage(place);
 
-  // const {pageNumber} = useAppSelector(state => state.pageNumberFavoriteReducer)
-  //
-  // console.log("pageNumber", pageNumber)
-
-  const [activePage, setActivePage] = useState(1);
   const [total, setTotal] = useState(3);
 
   const dispatch = useAppDispatch();
@@ -22,7 +20,6 @@ function PaginationComponent({ place }: MyProps) {
   const { setPageNumberFavorite } = pageNumberFavoriteAction;
 
   function handleChangePage(value: number) {
-    setActivePage(value);
 
     if (value === 1) {
       setTotal(value + 2);

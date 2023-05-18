@@ -11,7 +11,10 @@ function Logo() {
   }
   
   return (
-    <div className={styles.logoBlock} onClick={handleLogoNavigate}>
+    <div
+      className={styles.logo}
+      onClick={handleLogoNavigate}
+    >
       <img className={styles.lagoImg} src={logoIcon} alt="logo Img" />
       <h1 className={styles.lagoText}>Jobored</h1>
     </div>
