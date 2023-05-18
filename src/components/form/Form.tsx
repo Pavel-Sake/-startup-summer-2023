@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Select, NumberInput, Button } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
@@ -15,7 +15,9 @@ interface IFilter {
   salaryMax: string,
 }
 
+
 function Form() {
+
 
   const { setFilterForm } = vacancyFilterAction;
   const dispatch = useAppDispatch();
@@ -40,12 +42,22 @@ function Form() {
     dispatch(setFilterForm(values));
   }
 
+  function handleClickClearForm() {
+    const initialValue = {
+      cataloguesKey: "",
+      salaryMin: "",
+      salaryMax: "",
+    };
+
+    form.setValues(initialValue);
+  }
+
   return (
     <form className={styles.form} onSubmit={form.onSubmit((values) => handleSubmitForm(values))}>
       <div className={styles.clearBlock}>
         <div className={styles.clearLabel}>Фильтры</div>
-        <button className={styles.clearButton}>
-          Сбросить все &times; &#10006;
+        <button className={styles.clearButton} onClick={handleClickClearForm}>
+          Сбросить все &times;
         </button>
       </div>
       <Select
