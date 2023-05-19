@@ -1,8 +1,5 @@
 .wrapper {
-    padding-left: 11%;
-    padding-right: 11%;
-    padding-top: 40px;
-    padding-bottom: 44px;
+    padding: 40px 11% 44px 11%;
 }
 
 .wrapperSizeM {
@@ -10,3 +7,22 @@
     padding-right: 23%;
 }
 
+
+@media (max-width: 1000px) {
+
+    .wrapper {
+        padding: 15px 5% 15px 5%;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .wrapper {
+        padding: 15px 3% 15px 3%;
+    }
+
+    .wrapperSizeM {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}

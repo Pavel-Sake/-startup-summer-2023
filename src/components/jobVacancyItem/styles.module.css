@@ -137,3 +137,30 @@
 
     transform: scale(1.1);
 }
+
+@media (max-width: 800px) {
+
+    .item {
+        padding: 10px;
+        margin-top: 8px;
+    }
+
+    .nameLink {
+
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .salary--size-m {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .salary--size-s {
+        font-weight: 700;
+        font-size: 28px;
+    }
+}

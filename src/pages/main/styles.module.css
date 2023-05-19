@@ -7,10 +7,24 @@
 
 /*later change class*/
 .rightSide {
+    width: 60%;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 
     flex-grow: 1;
+}
+
+
+@media (max-width: 500px) {
+
+    .main {
+        flex-direction: column;
+    }
+
+    .rightSide {
+        width: 100%;
+    }
 }

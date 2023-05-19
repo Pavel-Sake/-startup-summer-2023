@@ -18,3 +18,17 @@
 .itemList:nth-child(2) {
     margin-right: 0;
 }
+
+@media (max-width: 500px) {
+
+    .itemList {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .itemList {
+        font-size: 12px;
+    }
+}

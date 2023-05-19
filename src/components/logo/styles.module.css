@@ -31,3 +31,18 @@
     height: 30px;
     margin-right: 12px;
 }
+
+@media (max-width: 1000px) {
+
+    .logo {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .lagoText {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
