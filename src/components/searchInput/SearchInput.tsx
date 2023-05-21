@@ -25,13 +25,14 @@ function SearchInput() {
   return (
     <div className={styles.searchInputWrapper}>
       <TextInput
+        data-elem="search-input"
         onChange={(event) => handleTextInput(event)}
         value={textInputValue}
         size="md"
         placeholder="Введите название вакансии"
         label=""
         radius="8px"
-        rightSection={<Button onClick={handleClickInput} size="xs">Поиск</Button>}
+        rightSection={<Button data-elem="search-button" onClick={handleClickInput} size="xs">Поиск</Button>}
         rightSectionWidth="80"
         icon={<IconSearch size="1rem" />}
       />

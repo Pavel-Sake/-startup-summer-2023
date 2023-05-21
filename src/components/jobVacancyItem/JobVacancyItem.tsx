@@ -64,7 +64,9 @@ function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
   const imgForButton = isVacancyFavorite ? starBlue : starWhite;
 
   return (
-    <li className={styles.item}>
+    <li
+      data-elem={`vacancy-${data.id}`}
+      className={styles.item}>
       <div>
         {
           isLink ?
@@ -81,7 +83,11 @@ function JobVacancyItem({ data, stileSize, isLink }: MyProps) {
           <p className={styles.city}>{data.town.title}</p>
         </div>
       </div>
-      <button className={styles.buttonFavorite} onClick={() => handleClickToSaveInStorage(data.id)}>
+      <button
+        data-elem={`vacancy-${data.id}-shortlist-button`}
+        className={styles.buttonFavorite}
+        onClick={() => handleClickToSaveInStorage(data.id)}
+      >
         <img className={styles.buttonFavoriteImg} src={imgForButton} alt="star icon" />
       </button>
     </li>

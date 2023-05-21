@@ -65,6 +65,7 @@ function Form() {
         </button>
       </div>
       <Select
+        data-elem="industry-select"
         className={styles.select}
         label="Отрасль"
         placeholder="Выберите отрасль"
@@ -74,6 +75,7 @@ function Form() {
       />
 
       <NumberInput
+        data-elem="salary-from-input"
         label="Оклад"
         placeholder="От"
         max={500000}
@@ -82,6 +84,7 @@ function Form() {
         {...form.getInputProps("salaryMin")}
       />
       <NumberInput
+        data-elem="salary-to-input"
         className={styles.numberInputMax}
         placeholder="До"
         max={500000}
@@ -90,7 +93,7 @@ function Form() {
         {...form.getInputProps("salaryMax")}
       />
 
-      <Button className={styles.submitButton} type="submit">Submit</Button>
+      <Button data-elem="search-button" className={styles.submitButton} type="submit">Применить</Button>
     </form>
   );
 }
