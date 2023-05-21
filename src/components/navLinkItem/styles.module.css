@@ -19,6 +19,22 @@
     margin-right: 0;
 }
 
+a {
+    color: black;
+}
+
+.active {
+    color: #5E96FC;
+}
+
+.itemLink:active {
+    color: black;
+}
+
+.itemLink:hover {
+    color: #5E96FC;
+}
+
 @media (max-width: 500px) {
 
     .itemList {

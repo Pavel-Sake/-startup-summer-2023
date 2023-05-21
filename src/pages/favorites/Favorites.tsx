@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import commonStyles from "../../commonStyles/styles.module.css";
 import { getFavoritesId } from "../../utilities/getFavoritesId";
-import { useGetVacanciesByIdQuery } from "../../services/startupSummerApi";
+import { useGetAccessTokenRefreshQuery, useGetVacanciesByIdQuery } from "../../services/startupSummerApi";
 import { getStringBasedArrForRequest } from "../../utilities/getStringBasedArrForRequest";
 import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
 import { useAppSelector } from "../../hooks/redux";
@@ -12,6 +12,10 @@ import { Loader } from "../../components/loader/Loader";
 import { PAGINATION_PLACE } from "../../constans/paginationPlace";
 
 import { EmptyVacancy } from "../../components/emptyVacancy/EmptyVacancy";
+import { Error } from "../../components/error/Error";
+import { setAndCheckTokenIsExpired } from "../../utilities/setAndCheckTokenIsExpired";
+import { IS_TOKEN_EXPIRED } from "../../constans/localStorageName";
+import { setAccessTokenToLocal } from "../../utilities/setAccessTokenToLocal";
 
 
 function Favorites() {
@@ -20,11 +24,16 @@ function Favorites() {
   const stringForRequest = getStringBasedArrForRequest(favoritesId);
 
   const { pageNumber } = useAppSelector(state => state.pageNumberFavoriteReducer);
-
-
   const params = getRequestParamsFavorite(stringForRequest, pageNumber);
 
+  const isTokenExpired = localStorage.getItem(IS_TOKEN_EXPIRED);
+  const refreshData = useGetAccessTokenRefreshQuery("", {
+    skip: isTokenExpired === "1" || isTokenExpired === undefined
+  });
+  setAccessTokenToLocal(refreshData.data);
+
   const { data, error, isLoading } = useGetVacanciesByIdQuery(params);
+  setAndCheckTokenIsExpired(error);
 
 
   const reRenderPage = useAppSelector(state => state.deleteFavoriteReducer);
@@ -38,7 +47,7 @@ function Favorites() {
           :
           <>
             {
-              error ? (<div>error</div>)
+              error ? (<Error />)
                 : isLoading ? (<Loader />)
                   : data ? (
                     <>

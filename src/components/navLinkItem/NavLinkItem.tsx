@@ -11,7 +11,7 @@ function NavLinkItem({ value, path }: MyProps) {
   
   return (
     <li className={styles.itemList}>
-      <NavLink to={path}>
+      <NavLink className={styles.itemLink} to={path}>
         {value}
       </NavLink>
     </li>

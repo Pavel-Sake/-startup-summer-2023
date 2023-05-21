@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "../../components/form/Form";
 import { JobVacancyList } from "../../components/jobVacancyList/JobVacancyList";
-import { useGetVacanciesQuery, useGetAccessTokenQuery, useGetCataloguesQuery } from "../../services/startupSummerApi";
+import {
+  useGetVacanciesQuery,
+  useGetAccessTokenQuery,
+  useGetCataloguesQuery,
+  useGetAccessTokenRefreshQuery
+} from "../../services/startupSummerApi";
 // import { fetchGetAccessKey } from "../../services/getAccessKey";
 import { SearchInput } from "../../components/searchInput/SearchInput";
 import { Loader } from "../../components/loader/Loader";
@@ -13,6 +18,11 @@ import commonStyles from "../../commonStyles/styles.module.css";
 import { useAppSelector } from "../../hooks/redux";
 import { getRequestParams } from "../../utilities/getRequestParams";
 import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
+import { Error } from "../../components/error/Error";
+
+import {IS_TOKEN_EXPIRED, ACCESS_TOKEN} from "../../constans/localStorageName";
+import {setAndCheckTokenIsExpired} from "../../utilities/setAndCheckTokenIsExpired";
+import {setAccessTokenToLocal} from "../../utilities/setAccessTokenToLocal";
 
 
 function Main() {
@@ -24,21 +34,17 @@ function Main() {
 
   const requestParams = getRequestParams(dataFromForm, searchWords, pageNumber);
 
-  
-  // useEffect(() => {
-  //   const accessKey = localStorage.getItem("key");
-  //
-  //   if (!accessKey) {
-  //     fetchGetAccessKey()
-  //       .then((res) => {
-  //         localStorage.setItem("key", res.data.access_token);
-  //       });
-  //   }
-  // }
+
+  const isTokenExpired = localStorage.getItem(IS_TOKEN_EXPIRED);
+
+  const refreshData = useGetAccessTokenRefreshQuery("", {
+    skip: isTokenExpired === "1" || isTokenExpired === undefined
+  });
+  setAccessTokenToLocal(refreshData.data);
 
 
   const { data, error, isLoading } = useGetVacanciesQuery(requestParams);
-  
+  setAndCheckTokenIsExpired(error);
 
   return (
     <main className={`${styles.main} ${commonStyles.wrapper}`}>
@@ -47,7 +53,10 @@ function Main() {
       <div className={styles.rightSide}>
         <SearchInput />
         {
-          !isLoading ? <JobVacancyList data={data} /> : <Loader />
+          error ? (<Error />)
+            : isLoading ? (<Loader />)
+              : data ? (<JobVacancyList data={data} />)
+                : null
         }
         <PaginationComponent place={PAGINATION_PLACE.MAIN} />
       </div>
