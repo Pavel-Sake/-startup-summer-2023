@@ -1,16 +1,14 @@
 import React from "react";
 
 import "./App.css";
-import { Main } from "./pages/main/Main";
-import { NotFound } from "./pages/notFound/NotFound";
-import { Favorites } from "./pages/favorites/Favorites";
+import { Main } from "./pages/Main";
+import { NotFound } from "./pages/NotFound";
+import { Favorites } from "./pages/Favorites";
 import { Routes, Route } from "react-router-dom";
-import { RootLayout } from "./layout/RootLayout";
-import { Vacancy } from "./pages/vacancy/Vacancy";
-
+import { RootLayout } from "./Layout";
+import { Vacancy } from "./pages/Vacancy";
 
 function App() {
-
   return (
     <div className="App">
       <Routes>
@@ -24,6 +22,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

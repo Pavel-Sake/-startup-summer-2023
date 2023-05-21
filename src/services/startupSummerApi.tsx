@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BASE_URL, LOGIN, PASSWORD, CLIENT_ID, CLIENT_SECRET, SECRET_KEY } from "../constans/constans";
+import { SECRETS } from "../constans/constans";
 import { ServerResponseVacancies } from "../models/modelsVacancies";
 import { ServerResponseCatalogues } from "../models/modelsCatalogues";
 import { ServerResponseVacancy } from "../models/modelsVacancy";
@@ -7,14 +7,14 @@ import { IRequestParams } from "../models/modelsRequestParams";
 import { IRequestParamsFavorite } from "../models/modelsRequestParamsFavorite";
 import { IRefreshToken } from "../models/modelsRefreshToken";
 
-import { ACCESS_TOKEN } from "../constans/localStorageName";
+import { LOCAL_STORAGE_NAMES } from "../constans/constans";
 
 
 let tokken = "1v3.r.137440105.8a697d870a500d95c3a841e24ecb40d89ddaf2a1.9f264fb26875ffa2d9cd243be9463d8c7b3a62e4";
 
 const refresh = "v3.r.137440105.9989a98e933a07552d641c03c5607809df00c487.65aed10cdf547d1397fd41fc671dca355ddd57d8";
 
-const accessToken = localStorage.getItem(ACCESS_TOKEN);
+const accessToken = localStorage.getItem(LOCAL_STORAGE_NAMES.ACCESS_TOKEN);
 
 if (accessToken) {
   tokken = accessToken;
@@ -24,7 +24,7 @@ if (accessToken) {
 export const startupSummerApi = createApi({
   reducerPath: "startupSummerApi",
   baseQuery: fetchBaseQuery(
-    { baseUrl: BASE_URL
+    { baseUrl: SECRETS.BASE_URL
     //   headers: {
     //   "Content-Type": "application/json",
     //   "X-Api-App-Id": CLIENT_SECRET,
@@ -37,14 +37,14 @@ export const startupSummerApi = createApi({
       query: (obf: string) => ({
         url: "oauth2/password/?",
         params: {
-          login: LOGIN,
-          password: PASSWORD,
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_SECRET,
+          login: SECRETS.LOGIN,
+          password: SECRETS.PASSWORD,
+          client_id: SECRETS.CLIENT_ID,
+          client_secret: SECRETS.CLIENT_SECRET,
         },
         headers: {
           "Content-Type": "application/json",
-          "x-secret-key": SECRET_KEY,
+          "x-secret-key": SECRETS.SECRET_KEY,
         },
       }),
     }),
@@ -54,12 +54,12 @@ export const startupSummerApi = createApi({
         url: "oauth2/refresh_token/?",
         params: {
           refresh_token: refresh,
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_SECRET,
+          client_id: SECRETS.CLIENT_ID,
+          client_secret: SECRETS.CLIENT_SECRET,
         },
         headers: {
           "Content-Type": "application/json",
-          "x-secret-key": SECRET_KEY,
+          "x-secret-key": SECRETS.SECRET_KEY,
         },
       }),
     }),
@@ -70,8 +70,8 @@ export const startupSummerApi = createApi({
         headers: {
           Authorization: `Bearer ${tokken}`, // example
           "Content-Type": "application/json",
-          "X-Api-App-Id": CLIENT_SECRET,
-          "x-secret-key": SECRET_KEY,
+          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
+          "x-secret-key": SECRETS.SECRET_KEY,
         },
       }),
     }),
@@ -91,8 +91,8 @@ export const startupSummerApi = createApi({
         headers: {
           Authorization: `Bearer ${tokken}`, // example
           "Content-Type": "application/json",
-          "X-Api-App-Id": CLIENT_SECRET,
-          "x-secret-key": SECRET_KEY,
+          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
+          "x-secret-key": SECRETS.SECRET_KEY,
         },
       }),
     }),
@@ -103,8 +103,8 @@ export const startupSummerApi = createApi({
         headers: {
           Authorization: `Bearer ${tokken}`, // example
           "Content-Type": "application/json",
-          "X-Api-App-Id": CLIENT_SECRET,
-          "x-secret-key": SECRET_KEY,
+          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
+          "x-secret-key": SECRETS.SECRET_KEY,
         },
       }),
     }),
@@ -119,8 +119,8 @@ export const startupSummerApi = createApi({
         headers: {
           Authorization: `Bearer ${tokken}`,
           "Content-Type": "application/json",
-          "X-Api-App-Id": CLIENT_SECRET,
-          "x-secret-key": SECRET_KEY,
+          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
+          "x-secret-key": SECRETS.SECRET_KEY,
         },
       }),
     }),
@@ -130,9 +130,12 @@ export const startupSummerApi = createApi({
 
 
 export const {
-  useGetVacanciesQuery, useGetAccessTokenQuery,
-  useGetCataloguesQuery, useGetVacancyQuery,
-  useGetVacanciesByIdQuery, useGetAccessTokenRefreshQuery
+  useGetVacanciesQuery,
+  useGetAccessTokenQuery,
+  useGetCataloguesQuery,
+  useGetVacancyQuery,
+  useGetVacanciesByIdQuery,
+  useGetAccessTokenRefreshQuery
 } = startupSummerApi;
 
 

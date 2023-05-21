@@ -1,4 +1,4 @@
-import { PAGINATION_PLACE } from "../constans/paginationPlace";
+import { PAGINATION_PLACE } from "../constans/constans";
 import { pageNumberAction } from "../store/reducers/numberPageSlice";
 import { pageNumberFavoriteAction } from "../store/reducers/numberPageFavoriteSlice";
 import { AppDispatch } from "../store/store";

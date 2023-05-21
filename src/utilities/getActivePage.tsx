@@ -1,9 +1,7 @@
 import { useAppSelector } from "../hooks/redux";
-import { PAGINATION_PLACE } from "../constans/paginationPlace";
-
+import { PAGINATION_PLACE } from "../constans/constans";
 
 function getActivePage(place: string) {
-
   switch (place) {
   case PAGINATION_PLACE.MAIN:
     const pageNumberMain = useAppSelector(state => state.pageNumberReducer);
@@ -15,9 +13,7 @@ function getActivePage(place: string) {
     break;
   default:
     return 0;
-      
   }
 }
-
 
 export { getActivePage };
