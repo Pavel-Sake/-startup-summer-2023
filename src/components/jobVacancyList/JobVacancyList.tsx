@@ -30,4 +30,5 @@ function JobVacancyList({ data }: MyProps) {
   );
 }
 
+
 export { JobVacancyList };

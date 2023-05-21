@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { TextInput, Button } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
@@ -9,7 +9,6 @@ import styles from "./styles.module.css";
 function SearchInput() {
 
   const { searchWords } = useAppSelector(state => state.searchInputSliceReducer);
-
   const [textInputValue,setTextInputValue] = useState(searchWords);
 
   const { setSearchInput } = searchInputSliceAction;
@@ -39,6 +38,7 @@ function SearchInput() {
     </div>
   );
 }
+
 
 export { SearchInput };
 

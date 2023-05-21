@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./App.css";
-import { Header } from "./components/header/Header";
 import { Main } from "./pages/main/Main";
 import { NotFound } from "./pages/notFound/NotFound";
 import { Favorites } from "./pages/favorites/Favorites";
@@ -25,5 +24,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

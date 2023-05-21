@@ -35,4 +35,5 @@ function PaginationComponent({ place }: MyProps) {
   );
 }
 
+
 export { PaginationComponent };

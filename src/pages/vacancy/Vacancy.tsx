@@ -2,16 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { JobVacancyItem } from "../../components/jobVacancyItem/JobVacancyItem";
 import { NotFound } from "../notFound/NotFound";
-
 import { useGetAccessTokenRefreshQuery, useGetVacancyQuery } from "../../services/startupSummerApi";
 import { Loader } from "../../components/loader/Loader";
+import { Error } from "../../components/error/Error";
+import { setAndCheckTokenIsExpired } from "../../utilities/setAndCheckTokenIsExpired";
+import { IS_TOKEN_EXPIRED } from "../../constans/localStorageName";
+import { setAccessTokenToLocal } from "../../utilities/setAccessTokenToLocal";
 
 import styles from "./styles.module.css";
 import stylesCommon from "../../commonStyles/styles.module.css";
-import { Error } from "../../components/error/Error";
-import { setAndCheckTokenIsExpired } from "../../utilities/setAndCheckTokenIsExpired";
-import { ACCESS_TOKEN, IS_TOKEN_EXPIRED } from "../../constans/localStorageName";
-import { setAccessTokenToLocal } from "../../utilities/setAccessTokenToLocal";
 
 
 function Vacancy() {
@@ -55,5 +54,6 @@ function Vacancy() {
     </div>
   );
 }
+
 
 export { Vacancy };

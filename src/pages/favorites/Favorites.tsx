@@ -1,6 +1,5 @@
 import React from "react";
-import styles from "./styles.module.css";
-import commonStyles from "../../commonStyles/styles.module.css";
+
 import { getFavoritesId } from "../../utilities/getFavoritesId";
 import { useGetAccessTokenRefreshQuery, useGetVacanciesByIdQuery } from "../../services/startupSummerApi";
 import { getStringBasedArrForRequest } from "../../utilities/getStringBasedArrForRequest";
@@ -9,13 +8,16 @@ import { useAppSelector } from "../../hooks/redux";
 import { PaginationComponent } from "../../components/paginationComponent/PaginationComponent";
 import { getRequestParamsFavorite } from "../../utilities/getRequestParamsFavorite";
 import { Loader } from "../../components/loader/Loader";
-import { PAGINATION_PLACE } from "../../constans/paginationPlace";
-
 import { EmptyVacancy } from "../../components/emptyVacancy/EmptyVacancy";
 import { Error } from "../../components/error/Error";
 import { setAndCheckTokenIsExpired } from "../../utilities/setAndCheckTokenIsExpired";
-import { IS_TOKEN_EXPIRED } from "../../constans/localStorageName";
 import { setAccessTokenToLocal } from "../../utilities/setAccessTokenToLocal";
+
+import { PAGINATION_PLACE } from "../../constans/paginationPlace";
+import { IS_TOKEN_EXPIRED } from "../../constans/localStorageName";
+
+import styles from "./styles.module.css";
+import commonStyles from "../../commonStyles/styles.module.css";
 
 
 function Favorites() {

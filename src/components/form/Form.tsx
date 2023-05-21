@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Select, NumberInput, Button } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
@@ -17,7 +17,6 @@ interface IFilter {
 
 
 function Form() {
-
 
   const { setFilterForm } = vacancyFilterAction;
   const dispatch = useAppDispatch();
