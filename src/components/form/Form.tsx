@@ -30,10 +30,15 @@ function Form() {
       salaryMax: "",
     },
     validate: {
-      // salaryMax: (value) => {
-      //   console.log("value")
-      //   return "dgdfsdf"
-      // }
+      salaryMax: (value) => {
+        const { salaryMin, salaryMax } = form.values;
+        if (salaryMin !== "" && salaryMax !== "") {
+          if (salaryMin > salaryMax) {
+            return "Некоректное число";
+          }
+        }
+        return false;
+      }
     },
   });
 
