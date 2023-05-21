@@ -5,6 +5,7 @@ import { ServerResponseCatalogues } from "../models/modelsCatalogues";
 import { ServerResponseVacancy } from "../models/modelsVacancy";
 import { IRequestParams } from "../models/modelsRequestParams";
 import { IRequestParamsFavorite } from "../models/modelsRequestParamsFavorite";
+import { IRefreshToken } from "../models/modelsRefreshToken";
 
 import { ACCESS_TOKEN } from "../constans/localStorageName";
 
@@ -48,7 +49,7 @@ export const startupSummerApi = createApi({
       }),
     }),
 
-    getAccessTokenRefresh: builder.query<any, string>({
+    getAccessTokenRefresh: builder.query<IRefreshToken, string>({
       query: (obf: string) => ({
         url: "oauth2/refresh_token/?",
         params: {

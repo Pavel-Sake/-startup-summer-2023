@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { vacancyFilterReducer } from "./cataloguesFromSlice";
-
 interface ISearch {
   searchWords: string,
 }
