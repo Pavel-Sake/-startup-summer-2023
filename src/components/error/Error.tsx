@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "./styles.module.css";
 
 
 function Error() {
   
   return (
-    <div>Чтото пошло не так перезагрузитк</div>
+    <div className={styles.error}>Чтото пошло не так перезагрузите страницу.</div>
   );
 }
 
