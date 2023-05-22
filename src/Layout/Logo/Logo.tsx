@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import logoIcon from "../../assets/icons/UnionLogo.png";
+import logoIcon from "../../assets/icons/unionLogo.png";
 import styles from "./Logo.module.css";
 
 function Logo() {

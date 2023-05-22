@@ -8,7 +8,7 @@ const favoriteSlice = createSlice({
   name: "favorite",
   initialState,
   reducers: {
-    deleteFavorite(state) {
+    toggleFavorite(state) {
       state.favoriteToggle = !state.favoriteToggle;
     }
   }

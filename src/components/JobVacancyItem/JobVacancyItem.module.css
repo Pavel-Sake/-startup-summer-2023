@@ -6,7 +6,6 @@
     font-style: normal;
 }
 
-
 .item {
     padding: 24px;
     margin-top: 16px;
@@ -46,19 +45,15 @@
     align-items: center;
 }
 
-
-
-.blockRow--size-m {
+.blockRow--sizeM {
     margin-bottom: 12px;
     margin-top: 12px;
 }
 
-.blockRow--size-s {
-
+.blockRow--sizeS {
     margin-bottom: 16px;
     margin-top: 16px;
 }
-
 
 
 .salary {
@@ -72,17 +67,15 @@
     color: #232134;
 }
 
-.salary--size-m {
+.salary--sizeM {
     font-size: 16px;
     font-weight: 600;
 }
 
-.salary--size-s {
+.salary--sizeS {
     font-weight: 700;
     font-size: 20px;
 }
-
-
 
 .mark {
     margin-right: 12px;
@@ -104,11 +97,11 @@
     color: #232134;
 }
 
-.typeOfWork--size-m {
+.typeOfWork--sizeM {
     font-size: 16px;
 }
 
-.typeOfWork--size-s {
+.typeOfWork--sizeS {
     font-size: 20px;
 }
 
@@ -134,12 +127,10 @@
 
 
 .buttonFavoriteImg:hover {
-
     transform: scale(1.1);
 }
 
 @media (max-width: 800px) {
-
     .item {
         padding: 10px;
         margin-top: 8px;
@@ -153,13 +144,12 @@
 }
 
 @media (max-width: 400px) {
-
-    .salary--size-m {
+    .salary--sizeM {
         font-size: 14px;
         font-weight: 600;
     }
 
-    .salary--size-s {
+    .salary--sizeS {
         font-weight: 700;
         font-size: 28px;
     }

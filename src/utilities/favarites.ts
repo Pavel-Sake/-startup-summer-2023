@@ -33,7 +33,7 @@ export function getFavoritesIds(): number[] {
   return [];
 }
 
-export function isFavorite(id: number): boolean {
+export function isFavoriteVacancy(id: number): boolean {
   const favoritesIds: number[] = getFavoritesIds();
   const isVacancyFavorite: boolean = favoritesIds.includes(id);
 

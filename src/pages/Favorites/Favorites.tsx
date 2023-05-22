@@ -2,46 +2,44 @@ import React from "react";
 
 import { getFavoritesIds } from "../../utilities/favarites";
 import { useGetAccessTokenRefreshQuery, useGetVacanciesByIdQuery } from "../../services/startupSummerApi";
-import { getStringBasedArrForRequest } from "../../utilities/getStringBasedArrForRequest";
-import { JobVacancyList } from "../../components/JobVacancyList/JobVacancyList";
+import { JobVacancyList } from "../../components/JobVacancyList";
 import { useAppSelector } from "../../hooks/redux";
-import { PaginationComponent } from "../../components/PaginationComponent/PaginationComponent";
-import { getRequestParamsFavorite } from "../../utilities/getRequestParamsFavorite";
+import { PaginationComponent } from "../../components/PaginationComponent";
+import { createRequestParamsForFavorite } from "../../utilities/createRequestParamsForFavorite";
 import { Loader } from "../../components/Loader";
 import { EmptyVacancy } from "../../components/EmptyVacancy";
 import { Error } from "../../components/Error";
-import { checkAndSetIsTokenExpired } from "../../utilities/accessToken";
+import { checkAndSetIsTokenExpired, isTokenExpired } from "../../utilities/accessToken";
 import { setAccessToken } from "../../utilities/accessToken";
 
-import { PAGINATION_PLACE, LOCAL_STORAGE_NAMES } from "../../constans/constans";
+import { PAGINATION_PLACE } from "../../constans/constans";
 
 import styles from "./Favorites.module.css";
 import commonStyles from "../../commonStyles/styles.module.css";
 
 function Favorites() {
-  const favoritesId = getFavoritesIds();
-  const stringForRequest = getStringBasedArrForRequest(favoritesId);
+  const favoritesIds = getFavoritesIds();
 
   const { pageNumber } = useAppSelector(state => state.pageNumberFavoriteReducer);
-  const params = getRequestParamsFavorite(stringForRequest, pageNumber);
+  const params = createRequestParamsForFavorite(favoritesIds, pageNumber);
 
-  const isTokenExpired = localStorage.getItem(LOCAL_STORAGE_NAMES.IS_TOKEN_EXPIRED);
+  const isTokenExpiredValue = isTokenExpired();
+
   const refreshData = useGetAccessTokenRefreshQuery("", {
-    skip: isTokenExpired === "1" || isTokenExpired === undefined
+    skip: !isTokenExpiredValue
   });
+  
   setAccessToken(refreshData.data);
 
   const { data, error, isLoading } = useGetVacanciesByIdQuery(params);
   checkAndSetIsTokenExpired(error);
 
-
-  const reRenderPage = useAppSelector(state => state.deleteFavoriteReducer);
-
+  useAppSelector(state => state.favoriteReducer);
   
   return (
     <div className={`${commonStyles.wrapperSizeM} ${styles.favorite}`}>
       {
-        !favoritesId.length ?
+        !favoritesIds.length ?
           <EmptyVacancy />
           :
           <>
@@ -50,8 +48,7 @@ function Favorites() {
                 : isLoading ? (<Loader />)
                   : data ? (
                     <>
-                      <JobVacancyList data={data} />
-                      {/*change later place name*/}
+                      <JobVacancyList data={data.objects} />
                       <PaginationComponent place={PAGINATION_PLACE.FAVORITE} />
                     </>
                   )

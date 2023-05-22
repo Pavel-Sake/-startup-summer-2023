@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { addOrDeleteFavoritesToStore, isFavorite } from "../../utilities/favarites";
-import starWhite from "../../assets/icons/starWhite.png";
-import starBlue from "../../assets/icons/starBlue.png";
+import { addOrDeleteFavoritesToStore, isFavoriteVacancy } from "../../utilities/favarites";
 import { favoriteAction } from "../../store/reducers/favoriteSlice";
 import { useAppDispatch } from "../../hooks/redux";
+
+import notFavoriteStartImage from "../../assets/icons/notFavoriteStartImage.png";
+import favoriteStartImage from "../../assets/icons/favoriteStartImage.png";
 
 import locationImg from "../../assets/icons/locationImg.png";
 import styles from "./JobVacancyItem.module.css";
@@ -13,46 +14,31 @@ import styles from "./JobVacancyItem.module.css";
 
 type JobVacancyItemProps = {
   data: any;
-  stileSize: string;
+  stileSize: "sizeM" | "sizeS";
   isLink: boolean
 }
-
-const style: any = {
-  sizeM: {
-    typeOfWork: "typeOfWork--size-m",
-    salary: "salary--size-m",
-    blockRow: "blockRow--size-m"
-  },
-  sizeS: {
-    typeOfWork: "typeOfWork--size-s",
-    salary: "salary--size-s",
-    blockRow: "blockRow--size-s"
-  }
-};
 
 function JobVacancyItem({ data, stileSize, isLink }: JobVacancyItemProps) {
   const dispatch = useAppDispatch();
    
-  const isVacancyFavoriteI = isFavorite(data.id);
+  const isFavoriteByDefault = isFavoriteVacancy(data.id);
 
-  const [isVacancyFavorite, setIsVacancyFavorite] = useState<boolean>(isVacancyFavoriteI);
+  const [isFavorite, setIsFavorite] = useState<boolean>(isFavoriteByDefault);
 
-  const vacancyId = `/vacancy/${data.id}`;
-  const typeOfWork = style[stileSize].typeOfWork;
-  const salary = style[stileSize].salary;
-  const blockRow = style[stileSize].blockRow;
-
-  //change function name later
-  function handleClickToSaveInStorage(id: number): void {
+  function handleClickFavorite(id: number): void {
     addOrDeleteFavoritesToStore(id);
 
-    const isVacancyFavorite = isFavorite(id);
-    setIsVacancyFavorite(isVacancyFavorite);
+    const isVacancyFavorite = isFavoriteVacancy(id);
+    setIsFavorite(isVacancyFavorite);
 
-    dispatch(favoriteAction.deleteFavorite());
+    dispatch(favoriteAction.toggleFavorite());
   }
 
-  const imgForButton = isVacancyFavorite ? starBlue : starWhite;
+  const favoriteButtonImage = isFavorite ? favoriteStartImage : notFavoriteStartImage;
+
+  const blockRowStyleSize = `blockRow--${stileSize}`;
+  const salaryStyleSize = `salary--${stileSize}`;
+  const typeOfWorkStyleSize = `typeOfWork--${stileSize}`;
 
   return (
     <li
@@ -61,13 +47,13 @@ function JobVacancyItem({ data, stileSize, isLink }: JobVacancyItemProps) {
       <div>
         {
           isLink ?
-            <Link className={styles.nameLink} to={vacancyId}>{data.profession}</Link> :
+            <Link className={styles.nameLink} to={`/vacancy/${data.id}`}>{data.profession}</Link> :
             <div className={styles.name}>{data.profession}</div>
         }
-        <div className={`${styles.blockRow} ${styles[blockRow]}`}>
-          <p className={`${styles.salary} ${styles[salary]}`}>з/п от {data.payment_from} rub</p>
+        <div className={`${styles.blockRow} ${styles[blockRowStyleSize]}`}>
+          <p className={`${styles.salary} ${styles[salaryStyleSize]}`}>з/п от {data.payment_from} rub</p>
           <p className={styles.mark}>&bull;</p>
-          <p className={`${styles.typeOfWork} ${styles[typeOfWork]}`}>{data.type_of_work.title}</p>
+          <p className={`${styles.typeOfWork} ${styles[typeOfWorkStyleSize]}`}>{data.type_of_work.title}</p>
         </div>
         <div className={styles.blockRow}>
           <img className={styles.locationImg} src={locationImg} alt="location img" />
@@ -77,9 +63,9 @@ function JobVacancyItem({ data, stileSize, isLink }: JobVacancyItemProps) {
       <button
         data-elem={`vacancy-${data.id}-shortlist-button`}
         className={styles.buttonFavorite}
-        onClick={() => handleClickToSaveInStorage(data.id)}
+        onClick={() => handleClickFavorite(data.id)}
       >
-        <img className={styles.buttonFavoriteImg} src={imgForButton} alt="star icon" />
+        <img className={styles.buttonFavoriteImg} src={favoriteButtonImage} alt="star icon" />
       </button>
     </li>
   );

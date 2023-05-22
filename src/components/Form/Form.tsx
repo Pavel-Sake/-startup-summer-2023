@@ -30,7 +30,7 @@ function Form() {
       salaryMax: "",
     },
     validate: {
-      salaryMax: (value) => {
+      salaryMax: () => {
         const { salaryMin, salaryMax } = form.values;
         if (salaryMin !== "" && salaryMax !== "") {
           if (salaryMin > salaryMax) {

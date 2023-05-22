@@ -1,13 +1,12 @@
 import React from "react";
-import favoritesImg from "../../assets/icons/favorites.png";
 import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
+import favoritesImg from "../../assets/icons/favorites.png";
+
 import styles from "./styles.module.css";
 
-
 function EmptyVacancy() {
-  
   return (
     <div className={styles.emptyPage}>
       <img className={styles.images} src={favoritesImg} alt="favorites img" />
