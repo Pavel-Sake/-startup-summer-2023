@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface IFilter {
+interface IVacancyFilter {
   cataloguesKey: string,
-  salaryMin: string,
-  salaryMax: string,
+  salaryMin: string | number,
+  salaryMax: string | number,
 }
 
-export const initialState: IFilter = {
+export const initialState: IVacancyFilter = {
   cataloguesKey: "",
   salaryMin: "",
   salaryMax: "",
@@ -16,7 +16,7 @@ export const vacancySlice = createSlice({
   name: "vacancyFilter",
   initialState,
   reducers: {
-    setFilterForm(state, action: PayloadAction<IFilter>) {
+    setVacancyFilter(state, action: PayloadAction<IVacancyFilter>) {
       state.cataloguesKey = action.payload.cataloguesKey;
       state.salaryMin = action.payload.salaryMin;
       state.salaryMax = action.payload.salaryMax;

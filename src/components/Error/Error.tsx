@@ -4,7 +4,7 @@ import styles from "./Error.module.css";
 
 function Error() {
   return (
-    <div className={styles.error}>Чтото пошло не так перезагрузите страницу.</div>
+    <div className={styles.error}>Что-то пошло не так, перезагрузите страницу.</div>
   );
 }
 

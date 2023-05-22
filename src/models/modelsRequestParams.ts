@@ -4,7 +4,7 @@ export interface IRequestParams {
   cataloguesKey: string | number,
   salaryMin: string | number,
   salaryMax: string | number,
-  searchWords: string,
+  searchValue: string,
 }
 
 export interface IRequestParamsFromForm {

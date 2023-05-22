@@ -1,12 +1,13 @@
 import React from "react";
 
-import { JobVacancyItem } from "../JobVacancyItem";
+import { JobVacancyItem } from "./JobVacancyItem";
 import { EmptyVacancy } from "../EmptyVacancy";
 
 import styles from "./JobVacancyList.module.css";
+import { ServerResponseVacancy } from "../../models/modelsVacancy";
 
 type JobVacancyListProps = {
-  data: any;
+  data: ServerResponseVacancy[];
 }
 
 function JobVacancyList({ data }: JobVacancyListProps) {
@@ -21,7 +22,7 @@ function JobVacancyList({ data }: JobVacancyListProps) {
   return (
     <ul className={styles.listVacancy}>
       {
-        data.map((item: any) => {
+        data.map((item: ServerResponseVacancy) => {
           return <JobVacancyItem key={item.id} data={item} stileSize="sizeM" isLink={true} />;
         })
       }

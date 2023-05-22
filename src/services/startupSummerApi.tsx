@@ -1,40 +1,36 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { SECRETS } from "../constans/constans";
-import { ServerResponseVacancies } from "../models/modelsVacancies";
+
+import { ServerResponseVacancies } from "../models/modelsVacancy";
 import { ServerResponseCatalogues } from "../models/modelsCatalogues";
 import { ServerResponseVacancy } from "../models/modelsVacancy";
 import { IRequestParams } from "../models/modelsRequestParams";
 import { IRequestParamsFavorite } from "../models/modelsRequestParamsFavorite";
 import { IRefreshToken } from "../models/modelsRefreshToken";
 
-import { LOCAL_STORAGE_NAMES } from "../constans/constans";
-
-
-let tokken = "1v3.r.137440105.8a697d870a500d95c3a841e24ecb40d89ddaf2a1.9f264fb26875ffa2d9cd243be9463d8c7b3a62e4";
+import { SECRETS } from "../constans/constans";
+import { getAccessToken } from "../utilities/accessToken";
 
 const refresh = "v3.r.137440105.9989a98e933a07552d641c03c5607809df00c487.65aed10cdf547d1397fd41fc671dca355ddd57d8";
 
-const accessToken = localStorage.getItem(LOCAL_STORAGE_NAMES.ACCESS_TOKEN);
+const headersWithoutAuth = {
+  "Content-Type": "application/json",
+  "x-secret-key": SECRETS.SECRET_KEY,
+};
 
-if (accessToken) {
-  tokken = accessToken;
-}
+const headersWithAuth = {
+  Authorization: `Bearer ${getAccessToken()}`,
+  "Content-Type": "application/json",
+  "X-Api-App-Id": SECRETS.CLIENT_SECRET,
+  "x-secret-key": SECRETS.SECRET_KEY,
+};
 
 
 export const startupSummerApi = createApi({
   reducerPath: "startupSummerApi",
-  baseQuery: fetchBaseQuery(
-    { baseUrl: SECRETS.BASE_URL
-    //   headers: {
-    //   "Content-Type": "application/json",
-    //   "X-Api-App-Id": CLIENT_SECRET,
-    //    "Authorization": `Bearer ${accessToken}`,
-    //   "x-secret-key": SECRET_KEY,
-    // },
-    }),
+  baseQuery: fetchBaseQuery({ baseUrl: SECRETS.BASE_URL }),
   endpoints: (builder) => ({
     getAccessToken: builder.query<any, string>({
-      query: (obf: string) => ({
+      query: (value: any) => ({
         url: "oauth2/password/?",
         params: {
           login: SECRETS.LOGIN,
@@ -42,37 +38,26 @@ export const startupSummerApi = createApi({
           client_id: SECRETS.CLIENT_ID,
           client_secret: SECRETS.CLIENT_SECRET,
         },
-        headers: {
-          "Content-Type": "application/json",
-          "x-secret-key": SECRETS.SECRET_KEY,
-        },
+        headers: headersWithoutAuth,
       }),
     }),
 
     getAccessTokenRefresh: builder.query<IRefreshToken, string>({
-      query: (obf: string) => ({
+      query: (value: any) => ({
         url: "oauth2/refresh_token/?",
         params: {
           refresh_token: refresh,
           client_id: SECRETS.CLIENT_ID,
           client_secret: SECRETS.CLIENT_SECRET,
         },
-        headers: {
-          "Content-Type": "application/json",
-          "x-secret-key": SECRETS.SECRET_KEY,
-        },
+        headers: headersWithoutAuth,
       }),
     }),
 
     getCatalogues: builder.query<ServerResponseCatalogues[], string>({
-      query: (text: string) => ({
+      query: (value: any) => ({
         url: "catalogues/",
-        headers: {
-          Authorization: `Bearer ${tokken}`, // example
-          "Content-Type": "application/json",
-          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
-          "x-secret-key": SECRETS.SECRET_KEY,
-        },
+        headers: headersWithAuth,
       }),
     }),
 
@@ -85,27 +70,17 @@ export const startupSummerApi = createApi({
           payment_from: `${data.salaryMin}`,
           payment_to: `${data.salaryMax}`,
           no_agreement: "1",
-          keyword: data.searchWords,
+          keyword: data.searchValue,
           catalogues: `${data.cataloguesKey}`,
         },
-        headers: {
-          Authorization: `Bearer ${tokken}`, // example
-          "Content-Type": "application/json",
-          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
-          "x-secret-key": SECRETS.SECRET_KEY,
-        },
+        headers: headersWithAuth,
       }),
     }),
 
     getVacancy: builder.query<ServerResponseVacancy, string | undefined >({
       query: (vacancyId: string | undefined) => ({
         url: `vacancies/${vacancyId}`,
-        headers: {
-          Authorization: `Bearer ${tokken}`, // example
-          "Content-Type": "application/json",
-          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
-          "x-secret-key": SECRETS.SECRET_KEY,
-        },
+        headers: headersWithAuth,
       }),
     }),
 
@@ -116,12 +91,7 @@ export const startupSummerApi = createApi({
           page: `${data.page}`,
           count: `${data.count}`,
         },
-        headers: {
-          Authorization: `Bearer ${tokken}`,
-          "Content-Type": "application/json",
-          "X-Api-App-Id": SECRETS.CLIENT_SECRET,
-          "x-secret-key": SECRETS.SECRET_KEY,
-        },
+        headers: headersWithAuth,
       }),
     }),
 
@@ -131,7 +101,6 @@ export const startupSummerApi = createApi({
 
 export const {
   useGetVacanciesQuery,
-  useGetAccessTokenQuery,
   useGetCataloguesQuery,
   useGetVacancyQuery,
   useGetVacanciesByIdQuery,

@@ -1,4 +1,3 @@
-
 export interface ServerResponseCatalogues {
   title_rus: string
   url_rus: string

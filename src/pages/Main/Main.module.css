@@ -1,28 +1,28 @@
 .main {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .rightSide {
-    width: 60%;
+  width: 60%;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 
 @media (max-width: 500px) {
-    .main {
-        flex-direction: column;
-    }
+  .main {
+    flex-direction: column;
+  }
 
-    .rightSide {
-        width: 100%;
-    }
+  .rightSide {
+    width: 100%;
+  }
 }

@@ -5,7 +5,7 @@ import { routs } from "../../routes/routes";
 import { NavLinkItem } from "../NavLinkItem";
 
 import styles from "./Header.module.css";
-import commonStyles from "../../commonStyles/styles.module.css";
+import commonStyles from "../../styles/commonStyles.module.css";
 
 function Header() {
   return (

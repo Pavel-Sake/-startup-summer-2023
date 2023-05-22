@@ -1,5 +1,7 @@
 import React from "react";
-import { Form } from "../../components/Form";
+import { useAppSelector } from "../../hooks/redux";
+
+import { VacancyFilterForm } from "./VacancyFilterForm";
 import { JobVacancyList } from "../../components/JobVacancyList";
 import {
   useGetVacanciesQuery,
@@ -8,24 +10,23 @@ import {
 import { SearchInput } from "../../components/SearchInput";
 import { Loader } from "../../components/Loader";
 import { PAGINATION_PLACE } from "../../constans/constans";
-import { useAppSelector } from "../../hooks/redux";
-import { getRequestParams } from "../../utilities/getRequestParams";
-import { PaginationComponent } from "../../components/PaginationComponent";
+import { createRequestParamsForVacancies } from "../../utilities/requestParams";
+import { WrapperPagination } from "../../components/WrapperPagination";
 import { Error } from "../../components/Error";
-import { checkAndSetIsTokenExpired, isTokenExpired } from "../../utilities/accessToken";
-import { setAccessToken } from "../../utilities/accessToken";
+import { checkAndSetIsTokenExpired, isTokenExpired, setAccessToken } from "../../utilities/accessToken";
 
 import styles from "./Main.module.css";
-import commonStyles from "../../commonStyles/styles.module.css";
+import commonStyles from "../../styles/commonStyles.module.css";
 
 function Main() {
   const dataFromForm = useAppSelector(state => state.vacancyFilterReducer);
-  const { searchWords } = useAppSelector(state => state.searchInputSliceReducer);
+  const { searchValue } = useAppSelector(state => state.searchInputReducer);
   const { pageNumber } = useAppSelector(state => state.pageNumberReducer);
 
-  const requestParams = getRequestParams(dataFromForm, searchWords, pageNumber);
+  const requestParams = createRequestParamsForVacancies(dataFromForm, searchValue, pageNumber);
 
   const isTokenExpiredValue = isTokenExpired();
+
   const refreshData = useGetAccessTokenRefreshQuery("", {
     skip: !isTokenExpiredValue
   });
@@ -34,19 +35,26 @@ function Main() {
 
   const { data, error, isLoading } = useGetVacanciesQuery(requestParams);
   checkAndSetIsTokenExpired(error);
-
+  
   return (
     <main className={`${styles.main} ${commonStyles.wrapper}`}>
-      <Form />
+      <VacancyFilterForm />
       <div className={styles.rightSide}>
         <SearchInput />
         {
           error ? (<Error />)
             : isLoading ? (<Loader />)
-              : data ? (<JobVacancyList data={data.objects} />)
+              : data ? (
+                <>
+                  <JobVacancyList data={data.objects} />
+                  <WrapperPagination
+                    place={PAGINATION_PLACE.MAIN}
+                    totalNumberItems={data.total}
+                  />
+                </>
+              )
                 : null
         }
-        <PaginationComponent place={PAGINATION_PLACE.MAIN} />
       </div>
     </main>
   );

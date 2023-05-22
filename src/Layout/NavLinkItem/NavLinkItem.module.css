@@ -1,50 +1,51 @@
 @font-face {
-    font-family: "Inter";
-    src: url("../../fonts/Inter-Bold.ttf") format("truetype");
-    src: url("../../fonts/Inter-Medium.ttf") format("truetype");
-    src: url("../../fonts/Inter-Regular.ttf") format("truetype");
-    font-style: normal;
+  font-family: "Inter";
+  src: url("../../fonts/Inter-Bold.ttf") format("truetype");
+  src: url("../../fonts/Inter-Medium.ttf") format("truetype");
+  src: url("../../fonts/Inter-Regular.ttf") format("truetype");
+  font-style: normal;
 }
-.itemList {
-    margin-right: 60px;
 
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
+.itemList {
+  margin-right: 60px;
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .itemList:nth-child(2) {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 a {
-    color: black;
+  color: black;
 }
 
 .active {
-    color: #5E96FC;
+  color: #5E96FC;
 }
 
 .itemLink:active {
-    color: black;
+  color: black;
 }
 
 .itemLink:hover {
-    color: #5E96FC;
+  color: #5E96FC;
 }
 
 @media (max-width: 500px) {
 
-    .itemList {
-        margin-right: 15px;
-    }
+  .itemList {
+    margin-right: 15px;
+  }
 }
 
 @media (max-width: 400px) {
 
-    .itemList {
-        font-size: 12px;
-    }
+  .itemList {
+    font-size: 12px;
+  }
 }

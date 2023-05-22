@@ -1,7 +1,7 @@
-export const PAGINATION_PLACE = {
-  MAIN: "main",
-  FAVORITE: "favorite"
-};
+export enum PAGINATION_PLACE {
+  MAIN = "MAIN",
+  FAVORITE = "FAVORITE",
+}
 
 export const LOCAL_STORAGE_NAMES = {
   ACCESS_TOKEN: "accessToken",
@@ -22,3 +22,5 @@ export enum EXPIRED_TOKEN_TYPES {
   EXPIRED = "EXPIRED",
   NOT_EXPIRED = "NOT_EXPIRED"
 }
+
+export const VACANCY_NUMBER_ON_PAGE = 4;

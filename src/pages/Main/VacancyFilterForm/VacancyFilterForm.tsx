@@ -2,58 +2,51 @@ import React from "react";
 import { Select, NumberInput, Button } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
-import { useAppDispatch } from "../../hooks/redux";
-import { vacancyFilterAction } from "../../store/reducers/cataloguesFromSlice";
-import { useCatalogues } from "../../hooks/useCatalogues";
 
-import styles from "./Form.module.css";
+import { useAppDispatch } from "../../../hooks/redux";
+import { vacancyFilterAction } from "../../../store/reducers/vacancyFilterSlice";
+import { useCatalogues } from "../../../hooks/useCatalogues";
 
+import styles from "./VacancyFilterForm.module.css";
 
 interface IFilter {
   cataloguesKey: string,
-  salaryMin: string,
-  salaryMax: string,
+  salaryMin: string | number,
+  salaryMax: string | number,
 }
 
+const initialValues: IFilter = {
+  cataloguesKey: "",
+  salaryMin: "",
+  salaryMax: "",
+};
 
-function Form() {
-
-  const { setFilterForm } = vacancyFilterAction;
+function VacancyFilterForm() {
   const dispatch = useAppDispatch();
 
-  const cataloguesForSelect = useCatalogues();
+  const catalogues = useCatalogues();
 
   const form = useForm({
-    initialValues: {
-      cataloguesKey: "",
-      salaryMin: "",
-      salaryMax: "",
-    },
+    initialValues: initialValues,
     validate: {
       salaryMax: () => {
         const { salaryMin, salaryMax } = form.values;
+
         if (salaryMin !== "" && salaryMax !== "") {
           if (salaryMin > salaryMax) {
-            return "Некоректное число";
+            return "Макс зарплата должна быть больше мин";
           }
         }
-        return false;
       }
     },
   });
 
   function handleSubmitForm(values: IFilter) {
-    dispatch(setFilterForm(values));
+    dispatch(vacancyFilterAction.setVacancyFilter(values));
   }
 
   function handleClickClearForm() {
-    const initialValue = {
-      cataloguesKey: "",
-      salaryMin: "",
-      salaryMax: "",
-    };
-
-    form.setValues(initialValue);
+    form.setValues(initialValues);
   }
 
   return (
@@ -70,10 +63,9 @@ function Form() {
         label="Отрасль"
         placeholder="Выберите отрасль"
         rightSection={<IconChevronDown size="1rem" />}
-        data={cataloguesForSelect}
+        data={catalogues}
         {...form.getInputProps("cataloguesKey")}
       />
-
       <NumberInput
         data-elem="salary-from-input"
         label="Оклад"
@@ -92,10 +84,15 @@ function Form() {
         step={500}
         {...form.getInputProps("salaryMax")}
       />
-
-      <Button data-elem="search-button" className={styles.submitButton} type="submit">Применить</Button>
+      <Button
+        data-elem="search-button"
+        className={styles.submitButton}
+        type="submit"
+      >
+        Применить
+      </Button>
     </form>
   );
 }
 
-export { Form };
+export { VacancyFilterForm };

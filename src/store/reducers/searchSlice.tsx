@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ISearch {
-  searchWords: string,
+  searchValue: string,
 }
-
 export const initialState: ISearch = {
-  searchWords: "",
+  searchValue: "",
 };
 
 export const searchInputSlice = createSlice({
@@ -12,10 +11,10 @@ export const searchInputSlice = createSlice({
   initialState,
   reducers: {
     setSearchInput(state, action: PayloadAction<string>) {
-      state.searchWords = action.payload;
+      state.searchValue = action.payload;
     }
   }
 });
 
-export const searchInputSliceAction = searchInputSlice.actions;
-export const searchInputSliceReducer = searchInputSlice.reducer;
+export const searchInputAction = searchInputSlice.actions;
+export const searchInputReducer = searchInputSlice.reducer;

@@ -1,15 +1,15 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import { startupSummerApi } from "../services/startupSummerApi";
-import { vacancyFilterReducer } from "./reducers/cataloguesFromSlice";
+import { vacancyFilterReducer } from "./reducers/vacancyFilterSlice";
 import { favoriteReducer } from "./reducers/favoriteSlice";
-import { searchInputSliceReducer } from "./reducers/searchSlice";
+import { searchInputReducer } from "./reducers/searchSlice";
 import { pageNumberReducer } from "./reducers/numberPageSlice";
 import { pageNumberFavoriteReducer } from "./reducers/numberPageFavoriteSlice";
 
 const rootReducer = combineReducers({
   vacancyFilterReducer,
-  searchInputSliceReducer,
+  searchInputReducer,
   favoriteReducer,
   pageNumberReducer,
   pageNumberFavoriteReducer,

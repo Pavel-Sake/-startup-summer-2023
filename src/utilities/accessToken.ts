@@ -24,6 +24,14 @@ export function setAccessToken(data: IRefreshToken | undefined): void {
   }
 }
 
+export function getAccessToken(): string {
+  const defaultToken = "v3.r.137440105.8a697d870a500d95c3a841e24ecb40d89ddaf2a1.9f264fb26875ffa2d9cd243be9463d8c7b3a62e4";
+  
+  const accessToken = localStorage.getItem(LOCAL_STORAGE_NAMES.ACCESS_TOKEN);
+
+  return accessToken || defaultToken;
+}
+
 type ErrorType = FetchBaseQueryError | SerializedError | undefined
 
 export function checkAndSetIsTokenExpired(error: ErrorType): void {
@@ -31,3 +39,4 @@ export function checkAndSetIsTokenExpired(error: ErrorType): void {
     localStorage.setItem(LOCAL_STORAGE_NAMES.IS_TOKEN_EXPIRED, EXPIRED_TOKEN_TYPES.EXPIRED);
   }
 }
+

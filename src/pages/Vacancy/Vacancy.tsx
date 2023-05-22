@@ -1,16 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { JobVacancyItem } from "../../components/JobVacancyItem";
+import { JobVacancyItem } from "../../components/JobVacancyList/JobVacancyItem";
 import { NotFound } from "../NotFound";
 import { useGetAccessTokenRefreshQuery, useGetVacancyQuery } from "../../services/startupSummerApi";
 import { Loader } from "../../components/Loader";
 import { Error } from "../../components/Error";
-import { checkAndSetIsTokenExpired } from "../../utilities/accessToken";
-import { isTokenExpired, setAccessToken } from "../../utilities/accessToken";
+import { isTokenExpired, setAccessToken, checkAndSetIsTokenExpired } from "../../utilities/accessToken";
 
 import styles from "./Vacancy.module.css";
-import stylesCommon from "../../commonStyles/styles.module.css";
+import commonStyle from "../../styles/commonStyles.module.css";
 
 function Vacancy() {
   const { vacancyId } = useParams();
@@ -31,7 +30,7 @@ function Vacancy() {
   }
 
   return (
-    <div className={`${stylesCommon.wrapperSizeM} ${styles.vacancy}`}>
+    <div className={`${commonStyle.wrapperSizeM} ${styles.vacancy}`}>
       {
         error ? (<Error />)
           : isLoading ? (<Loader />)

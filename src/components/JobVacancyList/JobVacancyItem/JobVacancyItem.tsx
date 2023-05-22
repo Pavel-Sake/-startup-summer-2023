@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { addOrDeleteFavoritesToStore, isFavoriteVacancy } from "../../utilities/favarites";
-import { favoriteAction } from "../../store/reducers/favoriteSlice";
-import { useAppDispatch } from "../../hooks/redux";
+import { addOrDeleteFavoritesToStore, isFavoriteVacancy } from "../../../utilities/favarites";
+import { favoriteAction } from "../../../store/reducers/favoriteSlice";
+import { useAppDispatch } from "../../../hooks/redux";
 
-import notFavoriteStartImage from "../../assets/icons/notFavoriteStartImage.png";
-import favoriteStartImage from "../../assets/icons/favoriteStartImage.png";
+import notFavoriteStartImage from "../../../assets/icons/notFavoriteStartImage.png";
+import favoriteStartImage from "../../../assets/icons/favoriteStartImage.png";
 
-import locationImg from "../../assets/icons/locationImg.png";
+import locationImg from "../../../assets/icons/locationImg.png";
 import styles from "./JobVacancyItem.module.css";
+import { ServerResponseVacancy } from "../../../models/modelsVacancy";
 
 
 type JobVacancyItemProps = {
-  data: any;
+  data: ServerResponseVacancy;
   stileSize: "sizeM" | "sizeS";
   isLink: boolean
 }

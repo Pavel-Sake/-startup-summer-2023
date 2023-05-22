@@ -1,0 +1,1 @@
+export { WrapperPagination } from "./WrapperPagination";
