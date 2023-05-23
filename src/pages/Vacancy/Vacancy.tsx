@@ -3,25 +3,23 @@ import { useParams } from "react-router-dom";
 
 import { JobVacancyItem } from "../../components/JobVacancyList/JobVacancyItem";
 import { NotFound } from "../NotFound";
-import { useGetAccessTokenRefreshQuery, useGetVacancyQuery } from "../../services/startupSummerApi";
+import { useGetVacancyQuery } from "../../services/startupSummerApi";
 import { Loader } from "../../components/Loader";
 import { Error } from "../../components/Error";
-import { isTokenExpired, setAccessToken, checkAndSetIsTokenExpired } from "../../utilities/accessToken";
+import { checkAndSetIsTokenExpired } from "../../utilities/tokens";
 
 import styles from "./Vacancy.module.css";
 import commonStyle from "../../styles/commonStyles.module.css";
+import { useAuth } from "../../hooks/useAuth";
 
 function Vacancy() {
   const { vacancyId } = useParams();
 
-  const isTokenExpiredValue = isTokenExpired();
-  const refreshData = useGetAccessTokenRefreshQuery("", {
-    skip: !isTokenExpiredValue
+  const isLoadingAuth = useAuth();
+
+  const { data, error, isLoading } = useGetVacancyQuery(vacancyId, {
+    skip: isLoadingAuth
   });
-
-  setAccessToken(refreshData.data);
-
-  const { data, error, isLoading } = useGetVacancyQuery(vacancyId);
   checkAndSetIsTokenExpired(error);
 
   

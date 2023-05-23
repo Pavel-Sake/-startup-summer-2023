@@ -5,6 +5,7 @@ export enum PAGINATION_PLACE {
 
 export const LOCAL_STORAGE_NAMES = {
   ACCESS_TOKEN: "accessToken",
+  REFRESH_TOKEN: "refreshToken",
   IS_TOKEN_EXPIRED: "isTokenExpired",
   VACANCY_IDS: "vacancyIds",
 };
