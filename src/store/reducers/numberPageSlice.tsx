@@ -5,7 +5,7 @@ interface IPageNumber {
 }
 
 export const initialState: IPageNumber = {
-  pageNumber: 0
+  pageNumber: 0,
 };
 
 export const pageNumberSlice = createSlice({
@@ -14,8 +14,8 @@ export const pageNumberSlice = createSlice({
   reducers: {
     setPageNumber(state, action: PayloadAction<IPageNumber>) {
       state.pageNumber = action.payload.pageNumber;
-    }
-  }
+    },
+  },
 });
 
 export const pageNumberAction = pageNumberSlice.actions;

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  favoriteToggle: false
+  favoriteToggle: false,
 };
 
 const favoriteSlice = createSlice({
@@ -10,8 +10,8 @@ const favoriteSlice = createSlice({
   reducers: {
     toggleFavorite(state) {
       state.favoriteToggle = !state.favoriteToggle;
-    }
-  }
+    },
+  },
 });
 
 export const favoriteAction = favoriteSlice.actions;

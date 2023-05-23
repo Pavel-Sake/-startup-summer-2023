@@ -21,7 +21,7 @@ export const vacancySlice = createSlice({
       state.salaryMin = action.payload.salaryMin;
       state.salaryMax = action.payload.salaryMax;
     },
-  }
+  },
 });
 
 export const vacancyFilterAction = vacancySlice.actions;

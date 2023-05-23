@@ -14,8 +14,8 @@ export const pageNumberFavoriteSlice = createSlice({
   reducers: {
     setPageNumberFavorite(state, action: PayloadAction<IPageNumber>) {
       state.pageNumber = action.payload.pageNumber;
-    }
-  }
+    },
+  },
 });
 
 export const pageNumberFavoriteAction = pageNumberFavoriteSlice.actions;

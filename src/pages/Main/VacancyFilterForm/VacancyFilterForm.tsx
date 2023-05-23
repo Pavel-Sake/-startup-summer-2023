@@ -37,7 +37,7 @@ function VacancyFilterForm() {
             return "Макс зарплата должна быть больше мин";
           }
         }
-      }
+      },
     },
   });
 

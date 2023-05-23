@@ -27,12 +27,12 @@ function Favorites() {
   const isLoadingAuth = useAuth();
 
   const { data, error, isLoading } = useGetVacanciesByIdQuery(params, {
-    skip: isLoadingAuth
+    skip: isLoadingAuth,
   });
   checkAndSetIsTokenExpired(error);
 
   useAppSelector(state => state.favoriteReducer);
-  
+
   return (
     <div className={`${commonStyles.wrapperSizeM} ${styles.favorite}`}>
       {

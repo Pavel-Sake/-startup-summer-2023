@@ -8,9 +8,7 @@ import { IRequestParamsFavorite } from "../models/modelsRequestParamsFavorite";
 import { IRefreshToken } from "../models/modelsRefreshToken";
 
 import { SECRETS } from "../constans/constans";
-import { getAccessToken } from "../utilities/tokens";
-
-const refresh = "v3.r.137440105.9989a98e933a07552d641c03c5607809df00c487.65aed10cdf547d1397fd41fc671dca355ddd57d8";
+import { getAccessToken, getRefreshToken } from "../utilities/tokens";
 
 const headersWithoutAuth = {
   "Content-Type": "application/json",
@@ -22,7 +20,6 @@ const headersWithAuth = {
   "X-Api-App-Id": SECRETS.CLIENT_SECRET,
   "x-secret-key": SECRETS.SECRET_KEY,
 };
-
 
 export const startupSummerApi = createApi({
   reducerPath: "startupSummerApi",
@@ -45,7 +42,7 @@ export const startupSummerApi = createApi({
       query: (value: any) => ({
         url: "oauth2/refresh_token/?",
         params: {
-          refresh_token: refresh,
+          refresh_token: getRefreshToken(),
           client_id: SECRETS.CLIENT_ID,
           client_secret: SECRETS.CLIENT_SECRET,
         },
@@ -58,7 +55,7 @@ export const startupSummerApi = createApi({
         url: "catalogues/",
         headers: {
           ...headersWithAuth,
-          Authorization: `Bearer ${getAccessToken()}`
+          Authorization: `Bearer ${getAccessToken()}`,
         },
       }),
     }),
@@ -77,7 +74,7 @@ export const startupSummerApi = createApi({
         },
         headers: {
           ...headersWithAuth,
-          Authorization: `Bearer ${getAccessToken()}`
+          Authorization: `Bearer ${getAccessToken()}`,
         },
       }),
     }),
@@ -87,7 +84,7 @@ export const startupSummerApi = createApi({
         url: `vacancies/${vacancyId}`,
         headers: {
           ...headersWithAuth,
-          Authorization: `Bearer ${getAccessToken()}`
+          Authorization: `Bearer ${getAccessToken()}`,
         },
       }),
     }),
@@ -101,7 +98,7 @@ export const startupSummerApi = createApi({
         },
         headers: {
           ...headersWithAuth,
-          Authorization: `Bearer ${getAccessToken()}`
+          Authorization: `Bearer ${getAccessToken()}`,
         },
       }),
     }),
@@ -116,7 +113,7 @@ export const {
   useGetVacancyQuery,
   useGetVacanciesByIdQuery,
   useGetAccessTokenRefreshQuery,
-  useLoginQuery
+  useLoginQuery,
 } = startupSummerApi;
 
 

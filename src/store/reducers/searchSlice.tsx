@@ -12,8 +12,8 @@ export const searchInputSlice = createSlice({
   reducers: {
     setSearchInput(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const searchInputAction = searchInputSlice.actions;

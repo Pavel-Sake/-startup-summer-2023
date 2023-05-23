@@ -28,7 +28,7 @@ function Main() {
   const isLoadingAuth = useAuth();
 
   const { data, error, isLoading } = useGetVacanciesQuery(requestParams, {
-    skip: isLoadingAuth
+    skip: isLoadingAuth,
   });
   checkAndSetIsTokenExpired(error);
   

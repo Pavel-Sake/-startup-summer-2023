@@ -10,7 +10,7 @@ export function useCatalogues(): IStateForSelect[] {
   const [catalogues, setCatalogues] = useState<IStateForSelect[]>([]);
 
   const { data } = useGetCataloguesQuery("", {
-    skip: catalogues.length > 0
+    skip: catalogues.length > 0,
   });
 
   if (data) {

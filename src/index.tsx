@@ -12,7 +12,7 @@ import "./index.css";
 const store = setupStore();
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 
 root.render(
@@ -24,7 +24,7 @@ root.render(
         </BrowserRouter>
       </Provider>
     </MantineProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 reportWebVitals();

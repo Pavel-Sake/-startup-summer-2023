@@ -25,7 +25,7 @@ export function useAuth(): boolean {
   const isTokenExpiredValue = isTokenExpired();
 
   const refreshData = useGetAccessTokenRefreshQuery("", {
-    skip: !isTokenExpiredValue && loginData.isLoading
+    skip: !isTokenExpiredValue && loginData.isLoading,
   });
 
   if (refreshData.data) {

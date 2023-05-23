@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { addOrDeleteFavoritesToStore, isFavoriteVacancy } from "../../../utilities/favarites";
 import { favoriteAction } from "../../../store/reducers/favoriteSlice";
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 
 import notFavoriteStartImage from "../../../assets/icons/notFavoriteStartImage.png";
 import favoriteStartImage from "../../../assets/icons/favoriteStartImage.png";
@@ -11,8 +11,8 @@ import favoriteStartImage from "../../../assets/icons/favoriteStartImage.png";
 import locationImg from "../../../assets/icons/locationImg.png";
 import styles from "./JobVacancyItem.module.css";
 import { ServerResponseVacancy } from "../../../models/modelsVacancy";
-import {setPageNumberToStore} from "../../../utilities/setPageNumberToStore";
-import {PAGINATION_PLACE} from "../../../constans/constans";
+import { setPageNumberToStore } from "../../../utilities/setPageNumberToStore";
+import { PAGINATION_PLACE } from "../../../constans/constans";
 
 
 type JobVacancyItemProps = {

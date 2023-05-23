@@ -13,7 +13,7 @@ export function createRequestParamsForVacancies(dataFromForm: IRequestParamsFrom
     cataloguesKey: dataFromForm.cataloguesKey || "",
     salaryMin: dataFromForm.salaryMin || "",
     salaryMax: dataFromForm.salaryMax || "",
-    searchValue: searchValue || ""
+    searchValue: searchValue || "",
   };
 
   return requestParams;
