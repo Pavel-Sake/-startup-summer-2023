@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/startup-summer-2023/static/css/main.783232ac.css",
+    "main.js": "/startup-summer-2023/static/js/main.ea5fe7c8.js",
+    "static/js/787.8aff24df.chunk.js": "/startup-summer-2023/static/js/787.8aff24df.chunk.js",
+    "static/media/Inter-Bold.ttf": "/startup-summer-2023/static/media/Inter-Bold.9aab1ebe6bd16660e37e.ttf",
+    "static/media/Inter-Medium.ttf": "/startup-summer-2023/static/media/Inter-Medium.9d1fd4235eeb376c5f96.ttf",
+    "static/media/Inter-Regular.ttf": "/startup-summer-2023/static/media/Inter-Regular.b559a93b35af397f4b6f.ttf",
+    "static/media/Poppins-SemiBold.ttf": "/startup-summer-2023/static/media/Poppins-SemiBold.090bd619384bb8d4c289.ttf",
+    "static/media/OpenSans-SemiBold.ttf": "/startup-summer-2023/static/media/OpenSans-SemiBold.00cfdcf664f140368569.ttf",
+    "static/media/favorites.png": "/startup-summer-2023/static/media/favorites.b96443a7eab080006e62.png",
+    "index.html": "/startup-summer-2023/index.html",
+    "main.783232ac.css.map": "/startup-summer-2023/static/css/main.783232ac.css.map",
+    "main.ea5fe7c8.js.map": "/startup-summer-2023/static/js/main.ea5fe7c8.js.map",
+    "787.8aff24df.chunk.js.map": "/startup-summer-2023/static/js/787.8aff24df.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.783232ac.css",
+    "static/js/main.ea5fe7c8.js"
+  ]
+}
