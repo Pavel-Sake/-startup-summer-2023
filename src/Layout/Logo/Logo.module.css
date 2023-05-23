@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("../../fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-right: 280px;
+
+  cursor: pointer;
+}
+
+.lagoText {
+  color: #232134;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.lagoImg {
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+}
+
+@media (max-width: 1000px) {
+  .logo {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .lagoText {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}

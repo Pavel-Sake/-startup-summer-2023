@@ -1,0 +1,1 @@
+export { EmptyVacancy } from "./EmptyVacancy";

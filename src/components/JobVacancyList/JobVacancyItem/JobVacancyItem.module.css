@@ -1,0 +1,156 @@
+@font-face {
+    font-family: "Inter";
+    src: url("../../../fonts/Inter-Bold.ttf") format("truetype");
+    src: url("../../../fonts/Inter-Medium.ttf") format("truetype");
+    src: url("../../../fonts/Inter-Regular.ttf") format("truetype");
+    font-style: normal;
+}
+
+.item {
+    padding: 24px;
+    margin-top: 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+    background: #FFFFFF;
+}
+
+.nameLink {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #5E96FC;
+}
+
+.name {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+}
+
+.blockRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.blockRow--sizeM {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.blockRow--sizeS {
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+
+.salary {
+    margin-right: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 20px;
+
+    color: #232134;
+}
+
+.salary--sizeM {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.salary--sizeS {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.mark {
+    margin-right: 12px;
+
+    color: #7B7C88;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 21px;
+}
+
+.typeOfWork {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+
+    color: #232134;
+}
+
+.typeOfWork--sizeM {
+    font-size: 16px;
+}
+
+.typeOfWork--sizeS {
+    font-size: 20px;
+}
+
+.locationImg {
+    margin-right: 12px;
+}
+
+.city {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #232134;
+}
+
+.buttonFavorite {
+    border: none;
+    background: inherit;
+    cursor: pointer;
+}
+
+
+.buttonFavoriteImg:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 800px) {
+    .item {
+        padding: 10px;
+        margin-top: 8px;
+    }
+
+    .nameLink {
+
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+    .salary--sizeM {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .salary--sizeS {
+        font-weight: 700;
+        font-size: 28px;
+    }
+}

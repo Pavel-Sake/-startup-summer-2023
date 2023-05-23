@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../../../fonts/Inter-Bold.ttf") format("truetype");
+  src: url("../../../fonts/Inter-Medium.ttf") format("truetype");
+  font-style: normal;
+}
+
+.form {
+  width: 35%;
+  padding: 20px;
+  margin-right: 28px;
+
+  background: #FFFFFF;
+  border: 1px solid #EAEBED;
+  border-radius: 12px;
+}
+
+.clearBlock {
+  margin-bottom: 32px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.clearLabel {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #232134;
+}
+
+.clearButton {
+  border: none;
+  background: inherit;
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ACADB9;
+}
+
+.clearButton:hover {
+  cursor: pointer;
+  color: #8b8c99;
+}
+
+.select {
+  margin-bottom: 20px;
+}
+
+.numberInputMax {
+  margin-top: 8px;
+}
+
+.submitButton {
+  margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+
+  .form {
+    margin-right: 10px;
+    padding: 10px;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .clearBlock {
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .clearLabel {
+    font-size: 17px;
+    line-height: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .form {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
